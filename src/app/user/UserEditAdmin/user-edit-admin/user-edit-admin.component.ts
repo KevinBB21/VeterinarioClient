@@ -49,7 +49,7 @@ export class UserEditAdminComponent implements OnInit {
         this.oForm = <FormGroup>this.oFormBuilder.group({
           id: [data.id, [Validators.required]],
           name: [data.name, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-          dni: [data.dni, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+          dni: [data.dni, [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
           surname1: [data.surname1, [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
           surname2: [data.surname2, [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
           email: [data.email, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
@@ -76,7 +76,7 @@ export class UserEditAdminComponent implements OnInit {
       this.oUserService.updateOne(this.oUser2Send).subscribe({
         next: (data: number) => {
           //open bootstrap modal here
-          this.modalTitle = "ANDAMIO";
+          this.modalTitle = "VETERINARIO";
           this.modalContent = "User " + this.id + " updated";
           this.showModal();
         }
@@ -90,7 +90,7 @@ export class UserEditAdminComponent implements OnInit {
     })
     var myModalEl = document.getElementById(this.mimodal);
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-      this.oRouter.navigate(['/admin/User/view', this.id])
+      this.oRouter.navigate(['/admin/user/view', this.id])
     })
     this.myModal.show()
   }

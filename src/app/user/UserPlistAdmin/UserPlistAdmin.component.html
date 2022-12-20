@@ -28,11 +28,11 @@
                 <div *ngIf="sortField=='id'&&sortDirection=='asc'">^</div>
                 <div *ngIf="sortField=='id'&&sortDirection=='desc'">_</div>
               </th>
-              <th (click)="setOrder('dni')">Dni</th>
               <th (click)="setOrder('name')">name
                 <div *ngIf="sortField=='name'&&sortDirection=='asc'">^</div>
                 <div *ngIf="sortField=='name'&&sortDirection=='desc'">_</div>
               </th>
+              <th (click)="setOrder('dni')">Dni</th>
               <th (click)="setOrder('surname1')">Surname1</th>
               <th (click)="setOrder('surname2')">Surname2</th>
               <th (click)="setOrder('email')">Email</th>

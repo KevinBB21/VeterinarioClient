@@ -7,11 +7,13 @@ import { UserRemoveAdminComponent } from './user/UserRemoveAdmin/user-remove-adm
 import { UserEditAdminComponent } from './user/UserEditAdmin/user-edit-admin/user-edit-admin.component';
 import { UserNewAdminComponent } from './user/UserNewAdmin/user-new-admin/user-new-admin.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'logout', component: LogoutComponent},
   { path: 'admin/user/plist', component: UserPlistAdminComponent },
   { path: 'admin/user/view/:id', component: UserViewAdminComponent },
   { path: 'admin/user/remove/:id', component: UserRemoveAdminComponent },

@@ -19,6 +19,7 @@ import { UserEditAdminComponent } from './user/UserEditAdmin/user-edit-admin/use
 import { UserDetailAdminUnroutedComponent } from './user/unrouted/admin/developer-detail-admin-unrouted/user-detail-admin-unrouted.component';
 import { UserRemoveAdminComponent } from './user/UserRemoveAdmin/user-remove-admin/user-remove-admin.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { LoginComponent } from './login/login.component';
     UserPlistAdminComponent,
     HomeComponent,
     LoginComponent,
+    LogoutComponent,
     MenuComponent,
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,
