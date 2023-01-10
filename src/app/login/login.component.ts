@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IUser } from 'src/app/model/generic';
+import { IUser } from 'src/app/model/user-interface';
 import { SessionService } from 'src/app/service/session.service';
 import { UntypedFormGroup, UntypedFormBuilder} from '@angular/forms';
 import { CryptoService } from 'src/app/service/crypto.service';
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.formularioLogin.setValue({
       username: "user",
-      password: "wildcart"
+      password: "andamio"
     })
   }
 

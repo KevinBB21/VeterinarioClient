@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IUser, IUser2Form, IUser2Send } from 'src/app/model/generic';
+import { IUser, IUser2Form, IUser2Send } from 'src/app/model/user-interface';
+import { Usertype } from 'src/app/model/usertype-response-interface';
 import { UserService } from 'src/app/service/User.service';
+import { UsertypeService } from 'src/app/service/usertype.service';
+import { Location } from '@angular/common';
 
 
 declare let bootstrap: any;
@@ -30,8 +33,10 @@ export class UserEditAdminComponent implements OnInit {
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
+    protected oLocation: Location,
     private oUserService: UserService,
-    private oFormBuilder: FormBuilder
+    private oFormBuilder: FormBuilder,
+    private oUsertypeService: UsertypeService
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
   }
@@ -53,9 +58,10 @@ export class UserEditAdminComponent implements OnInit {
           surname1: [data.surname1, [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
           surname2: [data.surname2, [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
           email: [data.email, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-          username: [data.username, [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+          username: [data.username, [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+          id_usertype: [data.usertype.id, [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
         });
-       // this.updateUsertypeDescription(this.oUser.usertype.id);
+        this.updateUsertypeDescription(this.oUser.usertype.id);
       }
     })
   }
@@ -70,7 +76,7 @@ export class UserEditAdminComponent implements OnInit {
       surname2: this.oForm.value.surname2,
       email: this.oForm.value.email,
       username: this.oForm.value.username,
-      usertype: { id: 2 }
+      usertype: { id: this.oForm.value.id_usertype }
     }
     if (this.oForm.valid) {
       this.oUserService.updateOne(this.oUser2Send).subscribe({
@@ -93,37 +99,32 @@ export class UserEditAdminComponent implements OnInit {
       this.oRouter.navigate(['/admin/user/view', this.id])
     })
     this.myModal.show()
+    this.oLocation.back();
   }
-/*
+
+ 
   openModalFindUsertype(): void {
     this.myModal = new bootstrap.Modal(document.getElementById("findUsertype"), { //pasar el myModal como parametro
       keyboard: false
     })
     this.myModal.show()
-
-
   }
 
-  closeUsertypeModal(id_Usertype: number) {
-    this.oForm.controls['id_Usertype'].setValue(id_Usertype);
-    this.updateUsertypeDescription(id_Usertype);
+  closeUsertypeModal(id_usertype: number) {
+    this.oForm.controls['id_usertype'].setValue(id_usertype);
+    this.updateUsertypeDescription(id_usertype);
     this.myModal.hide();
   }
 
-  updateUsertypeDescription(id_Usertype: number) {
-    this.oUsertypeService.getOne(id_Usertype).subscribe({
-      next: (data: IUsertype) => {      
-        this.UsertypeDescription = data.name;        
+  updateUsertypeDescription(id_usertype: number) {
+    this.oUsertypeService.getOne(id_usertype).subscribe({
+      next: (data: Usertype) => {
+        this.usertypeDescription = data.name;
       },
       error: (error: any) => {
-        this.UsertypeDescription = "Usertype not found";        
-        this.oForm.controls['id_Usertype'].setErrors({'incorrect': true});
+        this.usertypeDescription = "usertype not found";
+        this.oForm.controls['id_usertype'].setErrors({'incorrect': true});
       }
     })
   }
-
-*/
-  //openModalFindUsertype(): void {
-
-  }
-
+}

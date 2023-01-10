@@ -8,6 +8,8 @@ import { UserEditAdminComponent } from './user/UserEditAdmin/user-edit-admin/use
 import { UserNewAdminComponent } from './user/UserNewAdmin/user-new-admin/user-new-admin.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { GenerateComponent } from './shared/generate/generate.component';
+import { UsertypePlistAdminComponent } from './usertype/usertype-plist-admin/usertype-plist-admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'admin/user/remove/:id', component: UserRemoveAdminComponent },
   { path: 'admin/user/edit/:id', component: UserEditAdminComponent },
   { path: 'admin/user/new', component: UserNewAdminComponent },
+  { path: 'generate' , component: GenerateComponent},
+  { path: 'admin/usertype/plist', component: UsertypePlistAdminComponent },
 ];
 
 @NgModule({

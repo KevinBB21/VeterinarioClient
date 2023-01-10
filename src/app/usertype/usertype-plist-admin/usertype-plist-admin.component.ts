@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/service/User.service';
-import { IPage} from 'src/app/model/generic';
-import { IUser} from 'src/app/model/user-interface';
+import { IPage } from 'src/app/model/generic';
+import { IUsertype } from 'src/app/model/usertype-interface';
+import { UsertypeService } from 'src/app/service/usertype.service';
 
 @Component({
-  selector: 'app-UserPlistAdmin',
-  templateUrl: './UserPlistAdmin.component.html',
-  styleUrls: ['./UserPlistAdmin.component.css']
+  selector: 'app-usertype-plist-admin',
+  templateUrl: './usertype-plist-admin.component.html',
+  styleUrls: ['./usertype-plist-admin.component.css']
 })
-export class UserPlistAdminComponent implements OnInit {
-  responseFromServer: IPage<IUser>;
+export class UsertypePlistAdminComponent implements OnInit {
+  responseFromServer: IPage<IUsertype>;
   //
   strTermFilter: string = "";
   id_usertypeFilter: number = 0;
@@ -19,7 +19,7 @@ export class UserPlistAdminComponent implements OnInit {
   sortDirection: string = "";
 
   constructor(
-    private oUserService: UserService
+    private oUsertypeService: UsertypeService
   ) {
     this.getPage();
   }
@@ -29,9 +29,9 @@ export class UserPlistAdminComponent implements OnInit {
   }
 
   getPage() {
-    this.oUserService.getUserPlist(this.page, this.numberOfElements, this.strTermFilter,this.id_usertypeFilter, this.sortField, this.sortDirection)
+    this.oUsertypeService.getUserstypePlist(this.page, this.numberOfElements)
       .subscribe({
-        next: (resp: IPage<IUser>) => {
+        next: (resp: IPage<IUsertype>) => {
           this.responseFromServer = resp;
           if (this.page > resp.totalPages - 1) {
             this.page = resp.totalPages - 1;

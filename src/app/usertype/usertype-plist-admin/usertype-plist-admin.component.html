@@ -32,41 +32,12 @@
                 <div *ngIf="sortField=='name'&&sortDirection=='asc'">^</div>
                 <div *ngIf="sortField=='name'&&sortDirection=='desc'">_</div>
               </th>
-              <th (click)="setOrder('dni')">Dni</th>
-              <th (click)="setOrder('surname1')">Surname1</th>
-              <th (click)="setOrder('surname2')">Surname2</th>
-              <th (click)="setOrder('email')">Email</th>
-              <th (click)="setOrder('username')">Username</th>
-              <th (click)="setOrder('citas')">Citas</th>
-              
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let user of responseFromServer?.content">
               <td>{{user.id}}</td>
               <td>{{user.name}}</td>
-              <td>{{user.dni}}</td>
-              <td>{{user.surname1}}</td>
-              <td>{{user.surname2}}</td>
-              <td>{{user.email}}</td>
-              <td>{{user.username}}</td>            
-              <td>{{user.citas}}</td>   
-              <td (click)="setFilterByUsertype(user.usertype.id)">
-                {{user.usertype.id}}-{{user.usertype.name}}
-              </td>
-              <td>
-                <div class="btn-group" role="group" aria-label="Herramientas">
-                  <button class="btn btn-sm btn-primary" [routerLink]="['/admin/user/view',user.id]">
-                    ver
-                  </button>
-                  <button class="btn btn-sm btn-warning" [routerLink]="['/admin/user/edit',user.id]">
-                    editar
-                  </button>
-                  <button class="btn btn-sm btn-danger" [routerLink]="['/admin/user/remove',user.id]">
-                    borrar
-                  </button>
-                </div>
-              </td>
             </tr>
           </tbody>
         </table>

@@ -20,6 +20,10 @@ import { UserDetailAdminUnroutedComponent } from './user/unrouted/admin/develope
 import { UserRemoveAdminComponent } from './user/UserRemoveAdmin/user-remove-admin/user-remove-admin.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UsertypeFinderAdminUnroutedComponent } from './usertype/unrouted/tipousuario-finder-admin-unrouted/usertype-finder-admin-unrouted.component';
+import { GenerateComponent } from './shared/generate/generate.component';
+import { UsertypePlistAdminComponent } from './usertype/usertype-plist-admin/usertype-plist-admin.component';
+import { CryptoService } from './service/crypto.service';
 
 
 @NgModule({
@@ -38,6 +42,9 @@ import { LogoutComponent } from './logout/logout.component';
     UserEditAdminComponent,
     UserRemoveAdminComponent,
     UserDetailAdminUnroutedComponent,
+    UsertypeFinderAdminUnroutedComponent,
+    GenerateComponent,
+    UsertypePlistAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +55,7 @@ import { LogoutComponent } from './logout/logout.component';
 
   ],
   providers: [
+    CryptoService,
     PaginationService,
     UserService
   ],

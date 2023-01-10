@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IPage, IUser } from 'src/app/model/generic';
+import { IPage} from 'src/app/model/generic';
 import { UserService } from 'src/app/service/User.service';
+import { IUser } from 'src/app/model/user-interface';
 
 @Component({
   selector: 'app-user-detail-admin-unrouted',
