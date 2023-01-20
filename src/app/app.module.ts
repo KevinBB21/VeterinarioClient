@@ -16,7 +16,7 @@ import { PaginationService } from './service/pagination.service';
 import { UserViewAdminComponent } from './user/UserViewAdmin/user-view-admin/user-view-admin.component';
 import { UserNewAdminComponent } from './user/UserNewAdmin/user-new-admin/user-new-admin.component';
 import { UserEditAdminComponent } from './user/UserEditAdmin/user-edit-admin/user-edit-admin.component';
-import { UserDetailAdminUnroutedComponent } from './user/unrouted/admin/developer-detail-admin-unrouted/user-detail-admin-unrouted.component';
+import { UserDetailAdminUnroutedComponent } from './user/unrouted/admin/user-detail-admin-unrouted/user-detail-admin-unrouted.component';
 import { UserRemoveAdminComponent } from './user/UserRemoveAdmin/user-remove-admin/user-remove-admin.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -24,6 +24,12 @@ import { UsertypeFinderAdminUnroutedComponent } from './usertype/unrouted/tipous
 import { GenerateComponent } from './shared/generate/generate.component';
 import { UsertypePlistAdminComponent } from './usertype/usertype-plist-admin/usertype-plist-admin.component';
 import { CryptoService } from './service/crypto.service';
+import { ServicioPlistAdminComponent } from './servicio/servicio-plist-admin/servicio-plist-admin.component';
+import { ServicioViewAdminComponent } from './servicio/servicio-view-admin/servicio-view-admin.component';
+import { ServicioNewAdminComponent } from './servicio/servicio-new-admin/servicio-new-admin.component';
+import { ServicioEditAdminComponent } from './servicio/servicio-edit-admin/servicio-edit-admin.component';
+import { ServicioRemoveAdminComponent } from './servicio/servicio-remove-admin/servicio-remove-admin.component';
+import { ServicioDetailAdminComponent } from './servicio/unrouted/servicio-detail-admin/servicio-detail-admin.component';
 
 
 @NgModule({
@@ -45,6 +51,12 @@ import { CryptoService } from './service/crypto.service';
     UsertypeFinderAdminUnroutedComponent,
     GenerateComponent,
     UsertypePlistAdminComponent,
+    ServicioPlistAdminComponent,
+    ServicioViewAdminComponent,
+    ServicioNewAdminComponent,
+    ServicioEditAdminComponent,
+    ServicioRemoveAdminComponent,
+    ServicioDetailAdminComponent,
   ],
   imports: [
     BrowserModule,

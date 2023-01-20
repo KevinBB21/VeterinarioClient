@@ -10,6 +10,11 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { GenerateComponent } from './shared/generate/generate.component';
 import { UsertypePlistAdminComponent } from './usertype/usertype-plist-admin/usertype-plist-admin.component';
+import { ServicioPlistAdminComponent } from './servicio/servicio-plist-admin/servicio-plist-admin.component';
+import { ServicioViewAdminComponent } from './servicio/servicio-view-admin/servicio-view-admin.component';
+import { ServicioRemoveAdminComponent } from './servicio/servicio-remove-admin/servicio-remove-admin.component';
+import { ServicioEditAdminComponent } from './servicio/servicio-edit-admin/servicio-edit-admin.component';
+import { ServicioNewAdminComponent } from './servicio/servicio-new-admin/servicio-new-admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +28,11 @@ const routes: Routes = [
   { path: 'admin/user/new', component: UserNewAdminComponent },
   { path: 'generate' , component: GenerateComponent},
   { path: 'admin/usertype/plist', component: UsertypePlistAdminComponent },
+  { path: 'admin/servicio/plist', component: ServicioPlistAdminComponent },
+  { path: 'admin/servicio/view/:id', component: ServicioViewAdminComponent },
+  { path: 'admin/servicio/remove/:id', component: ServicioRemoveAdminComponent },
+  { path: 'admin/servicio/edit/:id', component: ServicioEditAdminComponent },
+  { path: 'admin/servicio/new', component: ServicioNewAdminComponent },
 ];
 
 @NgModule({
