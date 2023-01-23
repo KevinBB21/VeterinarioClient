@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IServicio } from 'src/app/model/servicio-interface';
 import { ServicioService } from 'src/app/service/servicio.service';
 
+
 @Component({
   selector: 'app-servicio-detail-admin',
   templateUrl: './servicio-detail-admin.component.html',

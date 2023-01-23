@@ -30,6 +30,7 @@ import { ServicioNewAdminComponent } from './servicio/servicio-new-admin/servici
 import { ServicioEditAdminComponent } from './servicio/servicio-edit-admin/servicio-edit-admin.component';
 import { ServicioRemoveAdminComponent } from './servicio/servicio-remove-admin/servicio-remove-admin.component';
 import { ServicioDetailAdminComponent } from './servicio/unrouted/servicio-detail-admin/servicio-detail-admin.component';
+import { TiposervicioFinderAdminComponent } from './tiposervicio/unrouted/tiposervicio-finder-admin/tiposervicio-finder-admin.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { ServicioDetailAdminComponent } from './servicio/unrouted/servicio-detai
     ServicioEditAdminComponent,
     ServicioRemoveAdminComponent,
     ServicioDetailAdminComponent,
+    TiposervicioFinderAdminComponent,
   ],
   imports: [
     BrowserModule,

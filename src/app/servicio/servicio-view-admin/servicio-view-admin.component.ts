@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IServicio } from 'src/app/model/servicio-interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-servicio-view-admin',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicioViewAdminComponent implements OnInit {
 
-  constructor() { }
+  id: number = 0;
+  oUser: IServicio = null;
 
-  ngOnInit(): void {
+  constructor(
+    private oActivatedRoute: ActivatedRoute
+  ) {
+    this.id = oActivatedRoute.snapshot.params['id'];
   }
 
+  ngOnInit(): void {
+    
+  }
 }
