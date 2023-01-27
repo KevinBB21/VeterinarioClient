@@ -1,0 +1,83 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Lista de servicios</h1>      
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+          <a [routerLink]="['/admin/servicio/new']" class="btn btn-primary mx-3">Alta de servicio</a>
+          <app-search-unrouted [placeHolder]="'Buscar servicio'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+          <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.numberOfElements"
+          (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
+        </div>
+        <div class="col-md">
+          <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+            (eePage)="setPage($event)"></app-pagination-unrouted>
+        </div>
+        <div class="col-md text-start">
+          <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+          <button class="btn btn-outline-danger" *ngIf="id_animalFilter!=0" (click)="setFilterByAnimal(0)">
+            <i class="bi bi-x-circle"></i> Reset animal {{id_animalFilter}} filter</button>
+        </div>
+        <div class="col-md text-start">
+            <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+            <button class="btn btn-outline-danger" *ngIf="id_servicioFilter!=0" (click)="setFilterByServicio(0)">
+              <i class="bi bi-x-circle"></i> Reset servicio {{id_servicioFilter}} filter</button>
+          </div>
+          <div class="col-md text-start">
+            <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+            <button class="btn btn-outline-danger" *ngIf="id_usuarioFilter!=0" (click)="setFilterByUsuario(0)">
+              <i class="bi bi-x-circle"></i> Reset usuario {{id_usuarioFilter}} filter</button>
+          </div>
+        <div class="col-md text-end">
+          <h5 class="text-muted">Total de registros en la consulta {{responseFromServer?.totalElements}}</h5>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th (click)="setOrder('id')">ID
+                <div *ngIf="sortField=='id'&&sortDirection=='asc'">^</div>
+                <div *ngIf="sortField=='id'&&sortDirection=='desc'">_</div>
+              </th>
+              <th (click)="setOrder('fecha')">name
+                <div *ngIf="sortField=='fecha'&&sortDirection=='asc'">^</div>
+                <div *ngIf="sortField=='fecha'&&sortDirection=='desc'">_</div>
+              </th>
+              <th (click)="setOrder('pagado')">Pagado</th>
+              <th (click)="setOrder('id_animal')">Imagen</th>
+              <th (click)="setOrder('id_servicio')">Descripcion</th>
+              <th (click)="setOrder('id_usuario')">Descripcion</th>                   
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cita of responseFromServer?.content">
+              <td>{{cita.id}}</td>
+              <td>{{cita.fecha}}</td>
+              <td>{{cita.pagado}}</td> 
+              <td (click)="setFilterByAnimal(cita.animal.id)">
+                {{cita.animal.id}}-{{cita.animal.nombre}}
+              </td>
+              <td (click)="setFilterByServicio(cita.servicio.id)">
+                {{cita.servicio.id}}-{{cita.servicio.nombre}}
+              </td>
+              <td (click)="setFilterByUsuario(cita.usuario.id)">
+                {{cita.usuario.id}}-{{cita.usuario.name}}
+              </td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Herramientas">
+                  <button class="btn btn-sm btn-primary" [routerLink]="['/admin/cita/view',cita.id]">
+                    ver
+                  </button>
+                  <button class="btn btn-sm btn-warning" [routerLink]="['/admin/cita/edit',cita.id]">
+                    editar
+                  </button>
+                  <button class="btn btn-sm btn-danger" [routerLink]="['/admin/cita/remove',cita.id]">
+                    borrar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

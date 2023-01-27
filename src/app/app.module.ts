@@ -31,6 +31,12 @@ import { ServicioEditAdminComponent } from './servicio/servicio-edit-admin/servi
 import { ServicioRemoveAdminComponent } from './servicio/servicio-remove-admin/servicio-remove-admin.component';
 import { ServicioDetailAdminComponent } from './servicio/unrouted/servicio-detail-admin/servicio-detail-admin.component';
 import { TiposervicioFinderAdminComponent } from './tiposervicio/unrouted/tiposervicio-finder-admin/tiposervicio-finder-admin.component';
+import { CitaEditAdminComponent } from './cita/cita-edit-admin/cita-edit-admin/cita-edit-admin.component';
+import { CitaNewAdminComponent } from './cita/cita-new-admin/cita-new-admin/cita-new-admin.component';
+import { CitaPlistAdminComponent } from './cita/cita-plist-admin/cita-plist-admin/cita-plist-admin.component';
+import { CitaRemoveAdminComponent } from './cita/cita-remove-admin/cita-remove-admin/cita-remove-admin.component';
+import { CitaViewAdminComponent } from './cita/cita-view-admin/cita-view-admin/cita-view-admin.component';
+import { CitaDetailAdminComponent } from './cita/unrouted/cita-detail-admin/cita-detail-admin.component';
 
 
 @NgModule({
@@ -59,6 +65,12 @@ import { TiposervicioFinderAdminComponent } from './tiposervicio/unrouted/tipose
     ServicioRemoveAdminComponent,
     ServicioDetailAdminComponent,
     TiposervicioFinderAdminComponent,
+    CitaEditAdminComponent,
+    CitaNewAdminComponent,
+    CitaPlistAdminComponent,
+    CitaRemoveAdminComponent,
+    CitaViewAdminComponent,
+    CitaDetailAdminComponent,
   ],
   imports: [
     BrowserModule,
