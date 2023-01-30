@@ -7,6 +7,9 @@ import { ServicioService } from 'src/app/service/servicio.service'
 import { TiposervicioService } from 'src/app/service/tiposervicio.service';
 import { IAnimal, ICita, ICita2Form, ICita2Send } from 'src/app/model/cita-interface';
 import { CitaService } from 'src/app/service/cita.service';
+import { UserService } from 'src/app/service/User.service';
+import { IUser } from 'src/app/model/user-interface';
+import { AnimalService } from 'src/app/service/animal.service';
 
 
 declare let bootstrap: any;
@@ -39,7 +42,9 @@ export class CitaNewAdminComponent implements OnInit {
     private oCitaService: CitaService,
     private oFormBuilder: FormBuilder,
     private oSessionService: SessionService,
-    private oAnimalService: AnimalService
+    private oAnimalService: AnimalService,
+    private oServicioService: ServicioService,
+    private oUserService: UserService
   ) {
   }
 
@@ -99,7 +104,7 @@ export class CitaNewAdminComponent implements OnInit {
         this.AnimalDescription = data.nombre;
       },
       error: (error: any) => {
-        this.animalDescription = "Animal not found";
+        this.AnimalDescription = "Animal not found";
         this.oForm.controls['id_animal'].setErrors({'incorrect': true});
       }
     })
@@ -112,6 +117,56 @@ export class CitaNewAdminComponent implements OnInit {
 
   openModalFindAnimal(): void {
     this.myModal = new bootstrap.Modal(document.getElementById("findAnimal"), { //pasar el myModal como parametro
+      keyboard: false
+    })
+    this.myModal.show()
+  }
+
+  
+  updateServicioDescription(id_Servicio: number) {
+    this.oServicioService.getOne(id_Servicio).subscribe({
+      next: (data: IServicio) => {
+        this.ServicioDescription = data.nombre;
+      },
+      error: (error: any) => {
+        this.ServicioDescription = "Servicio not found";
+        this.oForm.controls['id_Servicio'].setErrors({'incorrect': true});
+      }
+    })
+  }
+  closeServicioModal(id_Servicio: number) {
+    this.oForm.controls['id_Servicio'].setValue(id_Servicio);
+    this.updateServicioDescription(id_Servicio);
+    this.myModal.hide();
+  }
+
+  openModalFindServicio(): void {
+    this.myModal = new bootstrap.Modal(document.getElementById("findServicio"), { //pasar el myModal como parametro
+      keyboard: false
+    })
+    this.myModal.show()
+  }
+
+  
+  updateUsuarioDescription(id_Usuario: number) {
+    this.oUserService.getOne(id_Usuario).subscribe({
+      next: (data: IUser) => {
+        this.UsuarioDescription = data.name;
+      },
+      error: (error: any) => {
+        this.UsuarioDescription = "Usuario not found";
+        this.oForm.controls['id_Usuario'].setErrors({'incorrect': true});
+      }
+    })
+  }
+  closeUsuarioModal(id_Usuario: number) {
+    this.oForm.controls['id_Usuario'].setValue(id_Usuario);
+    this.updateUsuarioDescription(id_Usuario);
+    this.myModal.hide();
+  }
+
+  openModalFindUsuario(): void {
+    this.myModal = new bootstrap.Modal(document.getElementById("findUsuario"), { //pasar el myModal como parametro
       keyboard: false
     })
     this.myModal.show()
