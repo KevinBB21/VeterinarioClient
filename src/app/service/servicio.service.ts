@@ -4,6 +4,7 @@ import { IPage } from '../model/generic';
 import { Observable } from 'rxjs';
 import { API_URL } from 'src/environments/environment';
 import { IServicio, IServicio2Form, IServicio2Send } from '../model/servicio-interface'
+import { ServicioResponse } from '../model/servicio-response-interface';
 
 
 @Injectable({
@@ -59,6 +60,10 @@ export class ServicioService {
   getCountUsuarios(): Observable<number> {
     return this.oHttp.get<number>(this.url + "/count", {withCredentials:true});
   }
+
+ 
+
+  
 
 }
 

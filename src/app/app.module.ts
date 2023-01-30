@@ -37,6 +37,9 @@ import { CitaPlistAdminComponent } from './cita/cita-plist-admin/cita-plist-admi
 import { CitaRemoveAdminComponent } from './cita/cita-remove-admin/cita-remove-admin/cita-remove-admin.component';
 import { CitaViewAdminComponent } from './cita/cita-view-admin/cita-view-admin/cita-view-admin.component';
 import { CitaDetailAdminComponent } from './cita/unrouted/cita-detail-admin/cita-detail-admin.component';
+import { ServicioFinderAdminComponent } from './servicio/unrouted/servicio-finder-admin/servicio-finder-admin.component';
+import { AnimalFinderAdminComponent } from './animal/unrouted/animal-finder-admin/animal-finder-admin.component';
+import { UserFinderAdminComponent } from './user/unrouted/admin/user-finder-admin/user-finder-admin.component';
 
 
 @NgModule({
@@ -71,6 +74,9 @@ import { CitaDetailAdminComponent } from './cita/unrouted/cita-detail-admin/cita
     CitaRemoveAdminComponent,
     CitaViewAdminComponent,
     CitaDetailAdminComponent,
+    ServicioFinderAdminComponent,
+    AnimalFinderAdminComponent,
+    UserFinderAdminComponent,
   ],
   imports: [
     BrowserModule,

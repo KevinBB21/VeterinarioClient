@@ -14,7 +14,7 @@ export interface IAnimal {
     nombre: string;
     color: string;
     raza: string;
-    fecha_nac: string;
+    fecha_nac: Date;
     vacunado: number;
     peso: number;
     tipoanimal: ITipoanimal;
@@ -26,7 +26,7 @@ export interface ICita {
     pagado: number;
     animal: IAnimal;
     servicio: IServicio;
-    usuario: IUser;
+    user: IUser;
 }
 
 

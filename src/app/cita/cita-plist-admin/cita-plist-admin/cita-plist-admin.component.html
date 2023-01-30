@@ -1,9 +1,9 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mb-5">Lista de servicios</h1>      
+        <h1 class="text-center mb-5">Lista de citas</h1>      
         <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
-          <a [routerLink]="['/admin/servicio/new']" class="btn btn-primary mx-3">Alta de servicio</a>
+          <a [routerLink]="['/admin/cita/new']" class="btn btn-primary mx-3">Alta de citas</a>
           <app-search-unrouted [placeHolder]="'Buscar servicio'" (onSearch)="setFilter( $event )"></app-search-unrouted>
           <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.numberOfElements"
           (eeRpp)="this.setRpp($event)">
@@ -38,14 +38,15 @@
                 <div *ngIf="sortField=='id'&&sortDirection=='asc'">^</div>
                 <div *ngIf="sortField=='id'&&sortDirection=='desc'">_</div>
               </th>
-              <th (click)="setOrder('fecha')">name
+              <th (click)="setOrder('fecha')">Fecha
                 <div *ngIf="sortField=='fecha'&&sortDirection=='asc'">^</div>
                 <div *ngIf="sortField=='fecha'&&sortDirection=='desc'">_</div>
               </th>
               <th (click)="setOrder('pagado')">Pagado</th>
-              <th (click)="setOrder('id_animal')">Imagen</th>
-              <th (click)="setOrder('id_servicio')">Descripcion</th>
-              <th (click)="setOrder('id_usuario')">Descripcion</th>                   
+              <th (click)="setOrder('id_animal')">id_animal</th>
+              <th (click)="setOrder('id_servicio')">id_servicio</th>
+              <th (click)="setOrder('id_usuario')">id_usuario</th>     
+              <th>Operaciones</th>              
             </tr>
           </thead>
           <tbody>
@@ -59,9 +60,10 @@
               <td (click)="setFilterByServicio(cita.servicio.id)">
                 {{cita.servicio.id}}-{{cita.servicio.nombre}}
               </td>
-              <td (click)="setFilterByUsuario(cita.usuario.id)">
-                {{cita.usuario.id}}-{{cita.usuario.name}}
+              <td (click)="setFilterByUsuario(cita.user.id)">
+                {{cita.user.id}}-{{cita.user.name}}
               </td>
+        
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                   <button class="btn btn-sm btn-primary" [routerLink]="['/admin/cita/view',cita.id]">

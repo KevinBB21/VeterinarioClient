@@ -15,6 +15,11 @@ import { ServicioViewAdminComponent } from './servicio/servicio-view-admin/servi
 import { ServicioRemoveAdminComponent } from './servicio/servicio-remove-admin/servicio-remove-admin.component';
 import { ServicioEditAdminComponent } from './servicio/servicio-edit-admin/servicio-edit-admin.component';
 import { ServicioNewAdminComponent } from './servicio/servicio-new-admin/servicio-new-admin.component';
+import { CitaNewAdminComponent } from './cita/cita-new-admin/cita-new-admin/cita-new-admin.component';
+import { CitaEditAdminComponent } from './cita/cita-edit-admin/cita-edit-admin/cita-edit-admin.component';
+import { CitaPlistAdminComponent } from './cita/cita-plist-admin/cita-plist-admin/cita-plist-admin.component';
+import { CitaRemoveAdminComponent } from './cita/cita-remove-admin/cita-remove-admin/cita-remove-admin.component';
+import { CitaViewAdminComponent } from './cita/cita-view-admin/cita-view-admin/cita-view-admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +38,11 @@ const routes: Routes = [
   { path: 'admin/servicio/remove/:id', component: ServicioRemoveAdminComponent },
   { path: 'admin/servicio/edit/:id', component: ServicioEditAdminComponent },
   { path: 'admin/servicio/new', component: ServicioNewAdminComponent },
+  { path: 'admin/cita/plist', component: CitaPlistAdminComponent },
+  { path: 'admin/cita/view/:id', component: CitaViewAdminComponent },
+  { path: 'admin/cita/remove/:id', component: CitaRemoveAdminComponent },
+  { path: 'admin/cita/edit/:id', component: CitaEditAdminComponent },
+  { path: 'admin/cita/new', component: CitaNewAdminComponent },
 ];
 
 @NgModule({

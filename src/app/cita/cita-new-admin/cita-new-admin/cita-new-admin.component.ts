@@ -30,9 +30,9 @@ export class CitaNewAdminComponent implements OnInit {
   myModal: any;
   modalTitle: string = "";
   modalContent: string = "";
-  AnimalDescription: string = "";
-  ServicioDescription: string = "";
-  UsuarioDescription: string = "";
+  animalDescription: string = "";
+  servicioDescription: string = "";
+  usuarioDescription: string = "";
   id_animal:number;
   id_servicio:number;
   id_usuario:number;
@@ -101,11 +101,11 @@ export class CitaNewAdminComponent implements OnInit {
   updateAnimalDescription(id_Animal: number) {
     this.oAnimalService.getOne(id_Animal).subscribe({
       next: (data: IAnimal) => {
-        this.AnimalDescription = data.nombre;
+        this.animalDescription = data.nombre;
       },
       error: (error: any) => {
-        this.AnimalDescription = "Animal not found";
-        this.oForm.controls['id_animal'].setErrors({'incorrect': true});
+        this.animalDescription = "Animal not found";
+        this.oForm.controls['id_Animal'].setErrors({'incorrect': true});
       }
     })
   }
@@ -126,10 +126,10 @@ export class CitaNewAdminComponent implements OnInit {
   updateServicioDescription(id_Servicio: number) {
     this.oServicioService.getOne(id_Servicio).subscribe({
       next: (data: IServicio) => {
-        this.ServicioDescription = data.nombre;
+        this.servicioDescription = data.nombre;
       },
       error: (error: any) => {
-        this.ServicioDescription = "Servicio not found";
+        this.servicioDescription = "Servicio not found";
         this.oForm.controls['id_Servicio'].setErrors({'incorrect': true});
       }
     })
@@ -151,10 +151,10 @@ export class CitaNewAdminComponent implements OnInit {
   updateUsuarioDescription(id_Usuario: number) {
     this.oUserService.getOne(id_Usuario).subscribe({
       next: (data: IUser) => {
-        this.UsuarioDescription = data.name;
+        this.usuarioDescription = data.name;
       },
       error: (error: any) => {
-        this.UsuarioDescription = "Usuario not found";
+        this.usuarioDescription = "Usuario not found";
         this.oForm.controls['id_Usuario'].setErrors({'incorrect': true});
       }
     })

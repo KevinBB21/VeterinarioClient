@@ -9,10 +9,10 @@ export interface ITipoanimal {
 
 export interface IAnimal {
     id: number;
-    nombre_animal: string;
+    nombre: string;
     color: string;
     raza: string;
-    fecha_nac: string;
+    fecha_nac: Date;
     vacunado: number;
     peso: number;
     tipoanimal: ITipoanimal;
@@ -21,20 +21,20 @@ export interface IAnimal {
 
 export interface IAnimal2Form {
     id:          FormControl<number>;
-    nombre_animal:          FormControl<string>;
+    nombre:          FormControl<string>;
     color:        FormControl<string>;
     raza:     FormControl<string>;
-    fecha_nac:    FormControl<string>;
+    fecha_nac:    FormControl<Date>;
     vacunado:    FormControl<number>;
     peso:    FormControl<number>;
     id_tipoanimal:    FormControl<number>;
 }
 export interface IAnimal2Send {
     id:          number;
-    nombre_animal:          string
+    nombre:          string
     color:        string;
     raza:     string;
-    fecha_nac:  string;
+    fecha_nac:  Date;
     vacunado:     number;
     peso:     number;
     tipoanimal:   IEntity;

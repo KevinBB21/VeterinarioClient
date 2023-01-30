@@ -24,10 +24,10 @@ export class CitaPlistAdminComponent implements OnInit {
   constructor(
     private oCitaService: CitaService
   ) {
-    this.getPage();
   }
-
+  
   ngOnInit() {
+    this.getPage();
 
   }
 

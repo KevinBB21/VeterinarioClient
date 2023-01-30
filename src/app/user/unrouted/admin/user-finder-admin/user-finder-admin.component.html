@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Lista de users</h1>
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
+          <app-search-unrouted [placeHolder]="'Buscar user'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+          <app-dropdown-register-page class="mx-2" [PageSize]="this.getPageRegister()" (eeRpp)="this.setRpp($event)">
+          </app-dropdown-register-page>
+        </div>
+        <div class="col-md text-center">
+          <app-pagination-unrouted [nPage]="getPageNumber() + 1" [nTotalPages]="this.getpagesCount()"
+            (eePage)="setPage($event)"></app-pagination-unrouted>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Dni</th>
+              <th>Nombre</th>
+              <th>Apellido1</th>
+              <th>Apellido2</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Usertype</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of getPlistContent()">
+              <td>{{user.id}}</td>
+              <td>{{user.dni}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.surname1}}</td>
+              <td>{{user.surname2}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.usertype}}</td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Herramientas">
+                  <button class="btn btn-sm btn-primary" (click)="selectionUser(user.id)">
+                    Seleccionar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
