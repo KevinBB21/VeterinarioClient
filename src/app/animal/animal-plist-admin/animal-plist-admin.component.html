@@ -1,0 +1,72 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Lista de animals</h1>      
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+          <a [routerLink]="['/admin/animal/new']" class="btn btn-primary mx-3">Alta de animal</a>
+          <app-search-unrouted [placeHolder]="'Buscar animal'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+          <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.numberOfElements"
+          (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
+        </div>
+        <div class="col-md">
+          <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+            (eePage)="setPage($event)"></app-pagination-unrouted>
+        </div>
+        <div class="col-md text-start">
+          <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+          <button class="btn btn-outline-danger" *ngIf="id_tipoanimalFilter!=0" (click)="setFilterByTipoanimal(0)">
+            <i class="bi bi-x-circle"></i> Reset tipoanimal {{id_tipoanimalFilter}} filter</button>
+        </div>
+        <div class="col-md text-end">
+          <h5 class="text-muted">Total de registros en la consulta {{responseFromServer?.totalElements}}</h5>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th (click)="setOrder('id')">ID
+                <div *ngIf="sortField=='id'&&sortDirection=='asc'">^</div>
+                <div *ngIf="sortField=='id'&&sortDirection=='desc'">_</div>
+              </th>
+              <th (click)="setOrder('nombre')">nombre
+                <div *ngIf="sortField=='nombre'&&sortDirection=='asc'">^</div>
+                <div *ngIf="sortField=='nombre'&&sortDirection=='desc'">_</div>
+              </th>
+              <th (click)="setOrder('color')">color</th>
+              <th (click)="setOrder('raza')">raza</th>
+              <th (click)="setOrder('fecha_nac')">fecha_nac</th>    
+              <th (click)="setOrder('vacunado')">vacunado</th>   
+              <th (click)="setOrder('peso')">peso</th>             
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let animal of responseFromServer?.content">
+              <td>{{animal.id}}</td>
+              <td>{{animal.nombre}}</td>
+              <td>{{animal.color}}</td>
+              <td>{{animal.raza}}</td>
+              <td>{{animal.fecha_nac}}</td>   
+              <td>{{animal.vacunado}}</td>
+              <td>{{animal.peso}}</td> 
+              <td (click)="setFilterByTipoanimal(animal.tipoanimal.id)">
+                {{animal.tipoanimal.id}}-{{animal.tipoanimal.tipo}}
+              </td>
+              <td>
+                <div class="btn-group" role="group" aria-label="Herramientas">
+                  <button class="btn btn-sm btn-primary" [routerLink]="['/admin/animal/view',animal.id]">
+                    ver
+                  </button>
+                  <button class="btn btn-sm btn-warning" [routerLink]="['/admin/animal/edit',animal.id]">
+                    editar
+                  </button>
+                  <button class="btn btn-sm btn-danger" [routerLink]="['/admin/animal/remove',animal.id]">
+                    borrar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

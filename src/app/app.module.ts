@@ -40,6 +40,13 @@ import { CitaDetailAdminComponent } from './cita/unrouted/cita-detail-admin/cita
 import { ServicioFinderAdminComponent } from './servicio/unrouted/servicio-finder-admin/servicio-finder-admin.component';
 import { AnimalFinderAdminComponent } from './animal/unrouted/animal-finder-admin/animal-finder-admin.component';
 import { UserFinderAdminComponent } from './user/unrouted/admin/user-finder-admin/user-finder-admin.component';
+import { TipoanimalFinderAdminComponent } from './tipoanimal/unrouted/tipoanimal-finder-admin/tipoanimal-finder-admin.component';
+import { AnimalViewAdminComponent } from './animal/animal-view-admin/animal-view-admin.component';
+import { AnimalRemoveAdminComponent } from './animal/animal-remove-admin/animal-remove-admin.component';
+import { AnimalPlistAdminComponent } from './animal/animal-plist-admin/animal-plist-admin.component';
+import { AnimalEditAdminComponent } from './animal/animal-edit-admin/animal-edit-admin.component';
+import { AnimalNewAdminComponent } from './animal/animal-new-admin/animal-new-admin.component';
+import { AnimalDetailAdminComponent } from './animal/unrouted/animal-detail-admin/animal-detail-admin.component';
 
 
 @NgModule({
@@ -77,6 +84,13 @@ import { UserFinderAdminComponent } from './user/unrouted/admin/user-finder-admi
     ServicioFinderAdminComponent,
     AnimalFinderAdminComponent,
     UserFinderAdminComponent,
+    TipoanimalFinderAdminComponent,
+    AnimalViewAdminComponent,
+    AnimalRemoveAdminComponent,
+    AnimalPlistAdminComponent,
+    AnimalEditAdminComponent,
+    AnimalNewAdminComponent,
+    AnimalDetailAdminComponent,
   ],
   imports: [
     BrowserModule,
