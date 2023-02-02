@@ -134,9 +134,9 @@ export class CitaNewAdminComponent implements OnInit {
       }
     })
   }
-  closeServicioModal(id_Servicio: number) {
-    this.oForm.controls['id_Servicio'].setValue(id_Servicio);
-    this.updateServicioDescription(id_Servicio);
+  closeServicioModal(id_servicio: number) {
+    this.oForm.controls['id_servicio'].setValue(id_servicio);
+    this.updateServicioDescription(id_servicio);
     this.myModal.hide();
   }
 
@@ -146,7 +146,6 @@ export class CitaNewAdminComponent implements OnInit {
     })
     this.myModal.show()
   }
-
   
   updateUsuarioDescription(id_Usuario: number) {
     this.oUserService.getOne(id_Usuario).subscribe({
@@ -159,9 +158,9 @@ export class CitaNewAdminComponent implements OnInit {
       }
     })
   }
-  closeUsuarioModal(id_Usuario: number) {
-    this.oForm.controls['id_Usuario'].setValue(id_Usuario);
-    this.updateUsuarioDescription(id_Usuario);
+  closeUsuarioModal(id_usuario: number) {
+    this.oForm.controls['id_usuario'].setValue(id_usuario);
+    this.updateUsuarioDescription(id_usuario);
     this.myModal.hide();
   }
 

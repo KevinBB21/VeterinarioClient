@@ -1,45 +1,63 @@
 <div class="container mt-5">
-    <div class="row">
-      <div class="col">
-        <h1 class="text-center mb-5">Lista de Servicios</h1>
-        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
-          <app-search-unrouted [placeHolder]="'Buscar servicio'" (onSearch)="setFilter( $event )"></app-search-unrouted>
-          <app-dropdown-register-page class="mx-2" [PageSize]="this.getPageRegister()" (eeRpp)="this.setRpp($event)">
-          </app-dropdown-register-page>
-        </div>
-        <div class="col-md text-center">
-          <app-pagination-unrouted [nPage]="getPageNumber() + 1" [nTotalPages]="this.getpagesCount()"
-            (eePage)="setPage($event)"></app-pagination-unrouted>
-        </div>
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Imagen/<th>
-              <th>Descripcion</th>
-              <th>Tiposervicio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let servicio of getPlistContent()">
-              <td>{{servicio.id}}</td>
-              <td>{{servicio.nombre}}</td>
-              <td>{{servicio.precio}}</td>
-              <td>{{servicio.imagen}}</td>
-              <td>{{servicio.descripcion}}</td>
-              <td>{{servicio.tiposervicio}}</td>
-              <td>
-                <div class="btn-group" role="group" aria-label="Herramientas">
-                  <button class="btn btn-sm btn-primary" (click)="selectionServicio(servicio.id)">
-                    Seleccionar
-                  </button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Lista de servicios</h1>      
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+        <a [routerLink]="['/admin/servicio/new']" class="btn btn-primary mx-3">Alta de servicio</a>
+        <app-search-unrouted [placeHolder]="'Buscar servicio'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.numberOfElements"
+        (eeRpp)="this.setRpp($event)">
+      </app-dropdown-register-page>
       </div>
+      <div class="col-md">
+        <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <div class="col-md text-start">
+        <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+        <button class="btn btn-outline-danger" *ngIf="id_tiposervicioFilter!=0" (click)="setFilterByTiposervicio(0)">
+          <i class="bi bi-x-circle"></i> Reset tiposervicio {{id_tiposervicioFilter}} filter</button>
+      </div>
+      <div class="col-md text-end">
+        <h5 class="text-muted">Total de registros en la consulta {{responseFromServer?.totalElements}}</h5>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th (click)="setOrder('id')">ID
+              <div *ngIf="sortField=='id'&&sortDirection=='asc'">^</div>
+              <div *ngIf="sortField=='id'&&sortDirection=='desc'">_</div>
+            </th>
+            <th (click)="setOrder('nombre')">name
+              <div *ngIf="sortField=='nombre'&&sortDirection=='asc'">^</div>
+              <div *ngIf="sortField=='nombre'&&sortDirection=='desc'">_</div>
+            </th>
+            <th (click)="setOrder('precio')">Precio</th>
+            <th (click)="setOrder('imagen')">Imagen</th>
+            <th (click)="setOrder('descripcion')">Descripcion</th>              
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let servicio of responseFromServer?.content">
+            <td>{{servicio.id}}</td>
+            <td>{{servicio.nombre}}</td>
+            <td>{{servicio.precio}}</td>
+            <td>{{servicio.imagen}}</td>
+            <td>{{servicio.descripcion}}</td>   
+            <td (click)="setFilterByTiposervicio(servicio.tiposervicio.id)">
+              {{servicio.tiposervicio.id}}-{{servicio.tiposervicio.name}}
+            </td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Herramientas">
+                <button class="btn btn-sm btn-primary" (click)="selectionServicio(servicio.id)">
+                  Seleccionar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>
+           

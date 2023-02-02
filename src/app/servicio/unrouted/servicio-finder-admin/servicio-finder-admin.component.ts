@@ -12,82 +12,74 @@ import { SessionService } from 'src/app/service/session.service';
   styleUrls: ['./servicio-finder-admin.component.css']
 })
 export class ServicioFinderAdminComponent implements OnInit {
-
-
+ 
+ 
   @Output() closeEvent = new EventEmitter<number>();
 
-  private pListContent!: IServicio[];
-  private pagesCount!: number;
-  private numberPage: number = 0;
-  private pageRegister: number = 5;
-  private termino: string = "";
-  private OrderFilter: string;
-  private SortFilter: string;
-  id_Servicio: number = 0;
 
+  responseFromServer: IPage<IServicio>;
+  //
+  strTermFilter: string = "";
+  id_tiposervicioFilter: number = 0;
+  numberOfElements: number = 5;
+  page: number = 0;
+  sortField: string = "";
+  sortDirection: string = "";
 
   constructor(
-    private oServicioService: ServicioService,
-    private oSessionService: SessionService
-  ) {}
-
-  ngOnInit(): void {
-      localStorage.getItem;
+    private oServicioService: ServicioService
+  ) {
     this.getPage();
   }
 
- 
+  ngOnInit() {
+
+  }
+
   getPage() {
-    this.oServicioService.getServicioPlist(this.numberPage, this.pageRegister , this.termino ,this.id_Servicio , this.OrderFilter , this.SortFilter)
+    this.oServicioService.getServicioPlist(this.page, this.numberOfElements, this.strTermFilter,this.id_tiposervicioFilter, this.sortField, this.sortDirection)
       .subscribe({
         next: (resp: IPage<IServicio>) => {
-          this.pListContent = resp.content;
-          this.pagesCount = resp.totalPages;
-          
+          this.responseFromServer = resp;
+          if (this.page > resp.totalPages - 1) {
+            this.page = resp.totalPages - 1;
+          }
         },
-        error: (err: HttpErrorResponse) => {
-          console.log(err);
-        }
+      
       })
-    }
-
-  getPageNumber(): number {
-    return this.numberPage;
-  }
-
-  getPlistContent(): IServicio[] {
-    return this.pListContent;
-  }
-
-  getpagesCount(): number {
-    return this.pagesCount;
   }
 
   setPage(e: number) {
-    this.numberPage = e - 1;
+    this.page = (e - 1);
     this.getPage();
   }
 
-  getPageRegister(): number {
-    return this.pageRegister;
-  }
-
-  setRpp(registerPage: number) {
-    this.pageRegister = registerPage;
+  setRpp(rpp: number) {
+    this.numberOfElements = rpp;
+    this.setPage(1);
     this.getPage();
   }
 
-  setFilter(termino: string): void {
-    this.termino = termino;
-    this.numberPage = 0;
+  setFilter(term: string): void {
+    this.strTermFilter = term;
     this.getPage();
   }
 
-  filterByServicio(id: number): void {
-    this.id_Servicio = id;
-    this.numberPage = 0;
+  setFilterByTiposervicio(id: number): void {
+    this.id_tiposervicioFilter = id;
     this.getPage();
   }
+
+  setOrder(order: string): void {
+    this.sortField = order;
+    if (this.sortDirection == "asc") {
+      this.sortDirection = "desc";
+    } else {
+      this.sortDirection = "asc";
+    }
+    this.getPage();
+  }
+
 
   selectionServicio(id: number): void {
     this.closeEvent.emit(id);

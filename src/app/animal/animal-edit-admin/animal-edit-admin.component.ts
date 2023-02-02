@@ -53,12 +53,12 @@ export class AnimalEditAdminComponent implements OnInit {
         this.oForm = <FormGroup>this.oFormBuilder.group({
           id: [data.id, [Validators.required]],
           nombre: [data.nombre, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-          color: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(10)]],
-         raza: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(1)]],
-         fecha_nac: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
-         vacunado: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
-         peso: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]], 
-          id_tipoAnimal: ["", [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
+          color: [data.color, [Validators.required, Validators.minLength(0), Validators.maxLength(10)]],
+         raza: [data.raza, [Validators.required, Validators.minLength(0), Validators.maxLength(1)]],
+         fecha_nac: [data.fecha_nac, [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
+         vacunado: [data.vacunado, [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
+         peso: [data.peso, [Validators.required, Validators.minLength(3), Validators.maxLength(150)]], 
+          id_tipoanimal: [data.tipoanimal.id, [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
         });
         this.updateTipoAnimalDescription(this.oAnimal.tipoanimal.id);
       }
@@ -109,20 +109,20 @@ export class AnimalEditAdminComponent implements OnInit {
     this.myModal.show()
   }
 
-  closeTipoAnimalModal(id_tipoAnimal: number) {
-    this.oForm.controls['id_tipoAnimal'].setValue(id_tipoAnimal);
-    this.updateTipoAnimalDescription(id_tipoAnimal);
+  closeTipoAnimalModal(id_tipoanimal: number) {
+    this.oForm.controls['id_tipoanimal'].setValue(id_tipoanimal);
+    this.updateTipoAnimalDescription(id_tipoanimal);
     this.myModal.hide();
   }
 
-  updateTipoAnimalDescription(id_tipoAnimal: number) {
-    this.oTipoanimalService.getOne(id_tipoAnimal).subscribe({
+  updateTipoAnimalDescription(id_tipoanimal: number) {
+    this.oTipoanimalService.getOne(id_tipoanimal).subscribe({
       next: (data: Tipoanimal) => {
         this.tipoAnimalDescription = data.tipo;
       },
       error: (error: any) => {
         this.tipoAnimalDescription = "tipoAnimal not found";
-        this.oForm.controls['id_tipoAnimal'].setErrors({'incorrect': true});
+        this.oForm.controls['id_tipoanimal'].setErrors({'incorrect': true});
       }
     })
   }

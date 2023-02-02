@@ -20,6 +20,13 @@ import { CitaEditAdminComponent } from './cita/cita-edit-admin/cita-edit-admin/c
 import { CitaPlistAdminComponent } from './cita/cita-plist-admin/cita-plist-admin/cita-plist-admin.component';
 import { CitaRemoveAdminComponent } from './cita/cita-remove-admin/cita-remove-admin/cita-remove-admin.component';
 import { CitaViewAdminComponent } from './cita/cita-view-admin/cita-view-admin/cita-view-admin.component';
+import { AnimalEditAdminComponent } from './animal/animal-edit-admin/animal-edit-admin.component';
+import { AnimalNewAdminComponent } from './animal/animal-new-admin/animal-new-admin.component';
+import { AnimalPlistAdminComponent } from './animal/animal-plist-admin/animal-plist-admin.component';
+import { AnimalRemoveAdminComponent } from './animal/animal-remove-admin/animal-remove-admin.component';
+import { AnimalViewAdminComponent } from './animal/animal-view-admin/animal-view-admin.component';
+
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,6 +50,11 @@ const routes: Routes = [
   { path: 'admin/cita/remove/:id', component: CitaRemoveAdminComponent },
   { path: 'admin/cita/edit/:id', component: CitaEditAdminComponent },
   { path: 'admin/cita/new', component: CitaNewAdminComponent },
+  { path: 'admin/animal/plist', component: AnimalPlistAdminComponent },
+  { path: 'admin/animal/view/:id', component: AnimalViewAdminComponent },
+  { path: 'admin/animal/remove/:id', component: AnimalRemoveAdminComponent },
+  { path: 'admin/animal/edit/:id', component: AnimalEditAdminComponent },
+  { path: 'admin/animal/new', component: AnimalNewAdminComponent },
 ];
 
 @NgModule({

@@ -13,79 +13,70 @@ export class UserFinderAdminComponent implements OnInit {
 
   @Output() closeEvent = new EventEmitter<number>();
 
-  private pListContent!: IUser[];
-  private pagesCount!: number;
-  private numberPage: number = 0;
-  private pageRegister: number = 5;
-  private termino: string = "";
-  private OrderFilter: string;
-  private SortFilter: string;
-  id_User: number = 0;
-
+  responseFromServer: IPage<IUser>;
+  //
+  strTermFilter: string = "";
+  id_usertypeFilter: number = 0;
+  numberOfElements: number = 5;
+  page: number = 0;
+  sortField: string = "";
+  sortDirection: string = "";
 
   constructor(
-    private oUserService: UserService,
-    private oSessionService: SessionService
-  ) {}
-
-  ngOnInit(): void {
-      localStorage.getItem;
+    private oUserService: UserService
+  ) {
     this.getPage();
   }
 
- 
+  ngOnInit() {
+
+  }
+
   getPage() {
-    this.oUserService.getUserPlist(this.numberPage, this.pageRegister , this.termino ,this.id_User , this.OrderFilter , this.SortFilter)
+    this.oUserService.getUserPlist(this.page, this.numberOfElements, this.strTermFilter,this.id_usertypeFilter, this.sortField, this.sortDirection)
       .subscribe({
         next: (resp: IPage<IUser>) => {
-          this.pListContent = resp.content;
-          this.pagesCount = resp.totalPages;
-          
+          this.responseFromServer = resp;
+          if (this.page > resp.totalPages - 1) {
+            this.page = resp.totalPages - 1;
+          }
         },
-        error: (err: HttpErrorResponse) => {
-          console.log(err);
-        }
+      
       })
-    }
-
-  getPageNumber(): number {
-    return this.numberPage;
-  }
-
-  getPlistContent(): IUser[] {
-    return this.pListContent;
-  }
-
-  getpagesCount(): number {
-    return this.pagesCount;
   }
 
   setPage(e: number) {
-    this.numberPage = e - 1;
+    this.page = (e - 1);
     this.getPage();
   }
 
-  getPageRegister(): number {
-    return this.pageRegister;
-  }
-
-  setRpp(registerPage: number) {
-    this.pageRegister = registerPage;
+  setRpp(rpp: number) {
+    this.numberOfElements = rpp;
+    this.setPage(1);
     this.getPage();
   }
 
-  setFilter(termino: string): void {
-    this.termino = termino;
-    this.numberPage = 0;
+  setFilter(term: string): void {
+    this.strTermFilter = term;
     this.getPage();
   }
 
-  filterByUser(id: number): void {
-    this.id_User = id;
-    this.numberPage = 0;
+  setFilterByUsertype(id: number): void {
+    this.id_usertypeFilter = id;
     this.getPage();
   }
 
+  setOrder(order: string): void {
+    this.sortField = order;
+    if (this.sortDirection == "asc") {
+      this.sortDirection = "desc";
+    } else {
+      this.sortDirection = "asc";
+    }
+    this.getPage();
+  }
+ 
+ 
   selectionUser(id: number): void {
     this.closeEvent.emit(id);
   }

@@ -15,78 +15,70 @@ export class AnimalFinderAdminComponent implements OnInit {
 
   @Output() closeEvent = new EventEmitter<number>();
 
-  private pListContent!: IAnimal[];
-  private pagesCount!: number;
-  private numberPage: number = 0;
-  private pageRegister: number = 5;
-  private termino: string = "";
-  private OrderFilter: string;
-  private SortFilter: string;
-  id_Animal: number = 0;
-
+  responseFromServer: IPage<IAnimal>;
+  //
+  strTermFilter: string = "";
+  id_tipoanimalFilter: number = 0;
+  numberOfElements: number = 5;
+  page: number = 0;
+  sortField: string = "";
+  sortDirection: string = "";
 
   constructor(
-    private oAnimalService: AnimalService,
-    private oSessionService: SessionService
-  ) {}
-
-  ngOnInit(): void {
-      localStorage.getItem;
+    private oAnimalService: AnimalService
+  ) {
     this.getPage();
   }
 
- 
+  ngOnInit() {
+
+  }
+
   getPage() {
-    this.oAnimalService.getAnimalPlist(this.numberPage, this.pageRegister , this.termino ,this.id_Animal , this.OrderFilter , this.SortFilter)
+    this.oAnimalService.getAnimalPlist(this.page, this.numberOfElements, this.strTermFilter,this.id_tipoanimalFilter, this.sortField, this.sortDirection)
       .subscribe({
         next: (resp: IPage<IAnimal>) => {
-          this.pListContent = resp.content;
-          this.pagesCount = resp.totalPages;
-          
+          this.responseFromServer = resp;
+          if (this.page > resp.totalPages - 1) {
+            this.page = resp.totalPages - 1;
+          }
         },
-        error: (err: HttpErrorResponse) => {
-          console.log(err);
-        }
+      
       })
-    }
-
-  getPageNumber(): number {
-    return this.numberPage;
-  }
-
-  getPlistContent(): IAnimal[] {
-    return this.pListContent;
-  }
-
-  getpagesCount(): number {
-    return this.pagesCount;
   }
 
   setPage(e: number) {
-    this.numberPage = e - 1;
+    this.page = (e - 1);
     this.getPage();
   }
 
-  getPageRegister(): number {
-    return this.pageRegister;
-  }
-
-  setRpp(registerPage: number) {
-    this.pageRegister = registerPage;
+  setRpp(rpp: number) {
+    this.numberOfElements = rpp;
+    this.setPage(1);
     this.getPage();
   }
 
-  setFilter(termino: string): void {
-    this.termino = termino;
-    this.numberPage = 0;
+  setFilter(term: string): void {
+    this.strTermFilter = term;
     this.getPage();
   }
 
-  filterByAnimal(id: number): void {
-    this.id_Animal = id;
-    this.numberPage = 0;
+  setFilterByTipoanimal(id: number): void {
+    this.id_tipoanimalFilter = id;
     this.getPage();
   }
+
+  setOrder(order: string): void {
+    this.sortField = order;
+    if (this.sortDirection == "asc") {
+      this.sortDirection = "desc";
+    } else {
+      this.sortDirection = "asc";
+    }
+    this.getPage();
+  }
+
+
 
   selectionAnimal(id: number): void {
     this.closeEvent.emit(id);

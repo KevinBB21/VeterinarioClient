@@ -12,7 +12,7 @@ export class TipoanimalService {
 
   constructor( private oHttp : HttpClient ) { }
 
-  private entityURL: string = "/Tipoanimal";
+  private entityURL: string = "/tipoanimal";
 
 
   getTipoanimalPlist(page: number, size: number): Observable<TipoanimalResponse>{

@@ -42,10 +42,10 @@ export class AnimalNewAdminComponent implements OnInit {
       id: [''],
       nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       color: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(10)]],
-      raza: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(1)]],
+      raza: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(10)]],
       fecha_nac: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
-      vacunado: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
-      peso: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]], 
+      vacunado: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(1)]],
+      peso: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(15)]], 
       id_tipoAnimal: ["", [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
     });
     this.updateTipoAnimalDescription(this.id_tipoAnimal);
@@ -84,7 +84,7 @@ export class AnimalNewAdminComponent implements OnInit {
     })
     var myModalEl = document.getElementById(this.mimodal);
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-      this.oRouter.navigate(['/admin/Animal/view', data])
+      this.oRouter.navigate(['/admin/animal/view', data])
     })
     this.myModal.show()
   }

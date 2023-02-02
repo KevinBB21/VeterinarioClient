@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mb-5">Alta de Servicio</h1>
+        <h1 class="text-center mb-5">Alta de Animal</h1>
   
         <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
   
@@ -34,7 +34,7 @@
 
           
           <div class="mb-3 row">
-            <label for="inputcolor" class="col-sm-2 col-form-label">color</label>
+            <label for="inputcolor" class="col-sm-2 col-form-label">Color</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.color.dirty && !oForm.controls.color.errors?.['required'] &&
               oForm.controls.color.dirty && !oForm.controls.color.errors?.['minlength'] 
@@ -161,11 +161,11 @@
           </div>
 
           <div class="mb-3 row">
-            <label for="inputTipoanimal" class="col-sm-2 col-form-label">tipoanimal</label>
+            <label for="inputTipoanimal" class="col-sm-2 col-form-label">Tipoanimal</label>
             <div class="col-sm-6 has-validation">
               <div class="input-group">
                 <span class="input-group-text">{{TipoAnimalDescription}}</span>
-                <input type="text" class="form-control" formControlName="id_tipoanimal"
+                <input type="text" class="form-control" formControlName="id_TipoAnimal"
 
 
                 (keyup)="updateTipoAnimalDescription(oForm.controls.id_tipoanimal.value)"
@@ -220,7 +220,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="findTipoanimal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="findTipoAnimal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">

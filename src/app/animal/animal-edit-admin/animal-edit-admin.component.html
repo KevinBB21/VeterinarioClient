@@ -1,12 +1,12 @@
 <div class="container mt-5">
     <div class="row">
       <div class="col">
-        <h1 class="text-center mb-5">User's edit</h1>
+        <h1 class="text-center mb-5">Animal`s edit</h1>
   
         <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
   
           <div class="mb-3 row">
-            <label for="inputnombre" class="col-sm-2 col-form-label">nombre</label>
+            <label for="inputnombre" class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['required'] &&
               oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['minlength'] 
@@ -32,7 +32,7 @@
      
            
           <div class="mb-3 row">
-            <label for="inputcolor" class="col-sm-2 col-form-label">color</label>
+            <label for="inputcolor" class="col-sm-2 col-form-label">Color</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.color.dirty && !oForm.controls.color.errors?.['required'] &&
               oForm.controls.color.dirty && !oForm.controls.color.errors?.['minlength'] 
@@ -59,7 +59,7 @@
 
 
           <div class="mb-3 row">
-            <label for="inputraza" class="col-sm-2 col-form-label">raza</label>
+            <label for="inputraza" class="col-sm-2 col-form-label">Raza</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" id="inputraza" formControlName="raza" [ngClass]="{'is-valid' : 
               oForm.controls.raza.dirty && !oForm.controls.raza.errors?.['required'] &&
@@ -84,7 +84,7 @@
           </div>
 
           <div class="mb-3 row">
-            <label for="inputfecha_nac" class="col-sm-2 col-form-label">fecha_nac</label>
+            <label for="inputfecha_nac" class="col-sm-2 col-form-label">Fecha_nac</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" id="inputfecha_nac" formControlName="fecha_nac" [ngClass]="{'is-valid' : 
               oForm.controls.fecha_nac.dirty && !oForm.controls.fecha_nac.errors?.['required'] &&
@@ -110,7 +110,7 @@
   
           
           <div class="mb-3 row">
-            <label for="inputvacunado" class="col-sm-2 col-form-label">vacunado</label>
+            <label for="inputvacunado" class="col-sm-2 col-form-label">Vacunado</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" id="inputvacunado" formControlName="vacunado" [ngClass]="{'is-valid' : 
               oForm.controls.vacunado.dirty && !oForm.controls.vacunado.errors?.['required'] &&
@@ -135,7 +135,7 @@
           </div>
 
           <div class="mb-3 row">
-            <label for="inputpeso" class="col-sm-2 col-form-label">peso</label>
+            <label for="inputpeso" class="col-sm-2 col-form-label">Peso</label>
             <div class="col-sm-4 has-validation">
               <input type="text" class="form-control" id="inputpeso" formControlName="peso" [ngClass]="{'is-valid' : 
               oForm.controls.peso.dirty && !oForm.controls.peso.errors?.['required'] &&
@@ -161,7 +161,7 @@
 
 
           <div class="mb-3 row">
-            <label for="inputtipoanimal" class="col-sm-2 col-form-label">tipoanimal</label>
+            <label for="inputtipoanimal" class="col-sm-2 col-form-label">Tipoanimal</label>
             <div class="col-sm-6 has-validation">
               <div class="input-group">
                 <span class="input-group-text">{{tipoAnimalDescription}}</span>
