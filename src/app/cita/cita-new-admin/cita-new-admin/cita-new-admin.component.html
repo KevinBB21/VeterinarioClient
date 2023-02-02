@@ -127,26 +127,26 @@
             <div class="col-sm-6 has-validation">
               <div class="input-group">
                 <span class="input-group-text">{{usuarioDescription}}</span>
-                <input type="text" class="form-control" formControlName="id_usuario"
+                <input type="text" class="form-control" formControlName="id_user"
 
 
-                (keyup)="updateUsuarioDescription(oForm.controls.id_usuario.value)"
+                (keyup)="updateUsuarioDescription(oForm.controls.id_user.value)"
 
                 [ngClass]="{'is-valid' :
-                oForm.controls.id_usuario.dirty && !oForm.controls.id_usuario.errors?.['required'] &&
-                 !oForm.controls.id_usuario.errors?.['pattern'] && !oForm.controls.id_usuario.errors?.['incorrect'],
-                  'is-invalid' :  (oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required'] )
+                oForm.controls.id_user.dirty && !oForm.controls.id_user.errors?.['required'] &&
+                 !oForm.controls.id_user.errors?.['pattern'] && !oForm.controls.id_user.errors?.['incorrect'],
+                  'is-invalid' :  (oForm.controls.id_user.dirty &&  oForm.controls.id_user.errors?.['required'] )
                   ||
-                  ( oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['incorrect'])
+                  ( oForm.controls.id_user.dirty &&  oForm.controls.id_user.errors?.['incorrect'])
                 }">
                 <button type="button" class="btn btn-primary" (click)="openModalFindUsuario()">Buscar</button>
               </div>
               <div class="text-danger"
-                *ngIf="oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required']">
+                *ngIf="oForm.controls.id_user.dirty &&  oForm.controls.id_user.errors?.['required']">
                 El campo es obligatorio.
               </div>
               <div class="text-danger"
-                *ngIf="oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['pattern']">
+                *ngIf="oForm.controls.id_user.dirty &&  oForm.controls.id_user.errors?.['pattern']">
                 El campo ha de ser un entrero de máximo 6 dígitos.
               </div>
             </div>

@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AnimalService } from 'src/app/service/animal.service';
+import { VacunaService } from 'src/app/service/vacuna.service';
 import { Location } from '@angular/common';
-import { IAnimal, IAnimal2Form, IAnimal2Send } from 'src/app/model/animal-interface';
+import { IVacuna, IVacuna2Form, IVacuna2Send } from 'src/app/model/vacuna-interface';
 import { Tipoanimal } from 'src/app/model/tipoanimal-response-interface';
 import { TipoanimalService } from 'src/app/service/tipoanimal.service';
 
-
 declare let bootstrap: any;
+
 @Component({
-  selector: 'app-animal-edit-admin',
-  templateUrl: './animal-edit-admin.component.html',
-  styleUrls: ['./animal-edit-admin.component.css']
+  selector: 'app-vacuna-edit-admin',
+  templateUrl: './vacuna-edit-admin.component.html',
+  styleUrls: ['./vacuna-edit-admin.component.css']
 })
-export class AnimalEditAdminComponent implements OnInit {
+export class VacunaEditAdminComponent implements OnInit {
 
   id: number = 0;
-  oAnimal: IAnimal = null;
-  oAnimal2Form: IAnimal2Form = null;
-  oAnimal2Send: IAnimal2Send = null;
-  oForm: FormGroup<IAnimal2Form>;
+  oVacuna: IVacuna = null;
+  oVacuna2Form: IVacuna2Form = null;
+  oVacuna2Send: IVacuna2Send = null;
+  oForm: FormGroup<IVacuna2Form>;
   // modal
   mimodal: string = "miModal";
   myModal: any;
@@ -33,7 +33,7 @@ export class AnimalEditAdminComponent implements OnInit {
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     protected oLocation: Location,
-    private oAnimalService: AnimalService,
+    private oVacunaService: VacunaService,
     private oFormBuilder: FormBuilder,
     private oTipoanimalService: TipoanimalService
   ) {
@@ -46,43 +46,33 @@ export class AnimalEditAdminComponent implements OnInit {
   }
 
   getOne() {
-    this.oAnimalService.getOne(this.id).subscribe({
-      next: (data: IAnimal) => {
-        this.oAnimal = data;
+    this.oVacunaService.getOne(this.id).subscribe({
+      next: (data: IVacuna) => {
+        this.oVacuna = data;
         console.log(data);
         this.oForm = <FormGroup>this.oFormBuilder.group({
           id: [data.id, [Validators.required]],
           nombre: [data.nombre, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-          color: [data.color, [Validators.required, Validators.minLength(0), Validators.maxLength(10)]],
-         raza: [data.raza, [Validators.required, Validators.minLength(0), Validators.maxLength(15)]],
-         fecha_nac: [data.fecha_nac, [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
-         vacunado: [data.vacunado, [Validators.required, Validators.minLength(0), Validators.maxLength(1)]],
-         peso: [data.peso, [Validators.required, Validators.minLength(3), Validators.maxLength(150)]], 
           id_tipoanimal: [data.tipoanimal.id, [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
         });
-        this.updateTipoAnimalDescription(this.oAnimal.tipoanimal.id);
+        this.updateTipoAnimalDescription(this.oVacuna.tipoanimal.id);
       }
     })
   }
 
   onSubmit() {
     console.log("onSubmit");
-    this.oAnimal2Send = {
+    this.oVacuna2Send = {
       id: this.oForm.value.id,
       nombre: this.oForm.value.nombre,
-      color: this.oForm.value.color,
-      raza: this.oForm.value.raza,
-      fecha_nac: this.oForm.value.fecha_nac,
-      vacunado: this.oForm.value.vacunado,
-      peso: this.oForm.value.peso,
       tipoanimal: {id: this.oForm.value.id_tipoanimal}
     }
     if (this.oForm.valid) {
-      this.oAnimalService.updateOne(this.oAnimal2Send).subscribe({
+      this.oVacunaService.updateOne(this.oVacuna2Send).subscribe({
         next: (data: number) => {
           //open bootstrap modal here
           this.modalTitle = "VETERINARIO";
-          this.modalContent = "Animal " + this.id + " updated";
+          this.modalContent = "Vacuna " + this.id + " updated";
           this.showModal();
         }
       })
@@ -95,7 +85,7 @@ export class AnimalEditAdminComponent implements OnInit {
     })
     var myModalEl = document.getElementById(this.mimodal);
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-      this.oRouter.navigate(['/admin/animal/view', this.id])
+      this.oRouter.navigate(['/admin/vacuna/view', this.id])
     })
     this.myModal.show()
     this.oLocation.back();

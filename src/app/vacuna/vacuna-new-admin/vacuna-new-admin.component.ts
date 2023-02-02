@@ -2,24 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/service/session.service';
-import { IAnimal, IAnimal2Form, IAnimal2Send, ITipoanimal } from 'src/app/model/animal-interface';
-import { AnimalService } from 'src/app/service/animal.service'
+import { IVacuna, IVacuna2Form, IVacuna2Send ,ITipoanimal } from 'src/app/model/vacuna-interface';
+import { VacunaService } from 'src/app/service/vacuna.service'
 import { TipoanimalService } from 'src/app/service/tipoanimal.service';
 
-
 declare let bootstrap: any;
+
 @Component({
-  selector: 'app-animal-new-admin',
-  templateUrl: './animal-new-admin.component.html',
-  styleUrls: ['./animal-new-admin.component.css']
+  selector: 'app-vacuna-new-admin',
+  templateUrl: './vacuna-new-admin.component.html',
+  styleUrls: ['./vacuna-new-admin.component.css']
 })
-export class AnimalNewAdminComponent implements OnInit {
+export class VacunaNewAdminComponent implements OnInit {
 
   id: number = 0;
-  oUser: IAnimal = null;
-  oUser2Form: IAnimal2Form = null;
-  oUser2Send: IAnimal2Send = null;
-  oForm: FormGroup<IAnimal2Form>;
+  oVacuna: IVacuna = null;
+  oVacuna2Form: IVacuna2Form = null;
+  oVacuna2Send: IVacuna2Send = null;
+  oForm: FormGroup<IVacuna2Form>;
   // modal
   mimodal: string = "miModal";
   myModal: any;
@@ -30,7 +30,7 @@ export class AnimalNewAdminComponent implements OnInit {
 
   constructor(
     private oRouter: Router,
-    private oAnimalService: AnimalService,
+    private oVacunaService: VacunaService,
     private oFormBuilder: FormBuilder,
     private oSessionService: SessionService,
     private oTipoanimalService: TipoanimalService
@@ -41,11 +41,6 @@ export class AnimalNewAdminComponent implements OnInit {
     this.oForm = <FormGroup>this.oFormBuilder.group({
       id: [''],
       nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      color: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(10)]],
-      raza: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(10)]],
-      fecha_nac: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
-      vacunado: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(1)]],
-      peso: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(15)]], 
       id_tipoanimal: ["", [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
     });
     this.updateTipoAnimalDescription(this.id_tipoAnimal);
@@ -53,18 +48,13 @@ export class AnimalNewAdminComponent implements OnInit {
 
   onSubmit() {
     console.log("onSubmit");
-    this.oUser2Send = {
+    this.oVacuna2Send = {
       id: this.oForm.value.id,
       nombre: this.oForm.value.nombre,
-      color: this.oForm.value.color,
-      raza: this.oForm.value.raza,
-      fecha_nac: this.oForm.value.fecha_nac,
-      vacunado: this.oForm.value.vacunado,
-      peso: this.oForm.value.peso,
       tipoanimal: {id: this.oForm.value.id_tipoanimal}
     }
     if (this.oForm.valid) {
-      this.oAnimalService.newOne(this.oUser2Send).subscribe({
+      this.oVacunaService.newOne(this.oVacuna2Send).subscribe({
         next: (data: number) => {
           //open bootstrap modal here
           this.modalTitle = "VETERINARIO";
@@ -84,7 +74,7 @@ export class AnimalNewAdminComponent implements OnInit {
     })
     var myModalEl = document.getElementById(this.mimodal);
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-      this.oRouter.navigate(['/admin/animal/view', data])
+      this.oRouter.navigate(['/admin/vacuna/view', data])
     })
     this.myModal.show()
   }

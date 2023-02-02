@@ -25,6 +25,11 @@ import { AnimalNewAdminComponent } from './animal/animal-new-admin/animal-new-ad
 import { AnimalPlistAdminComponent } from './animal/animal-plist-admin/animal-plist-admin.component';
 import { AnimalRemoveAdminComponent } from './animal/animal-remove-admin/animal-remove-admin.component';
 import { AnimalViewAdminComponent } from './animal/animal-view-admin/animal-view-admin.component';
+import { VacunaEditAdminComponent } from './vacuna/vacuna-edit-admin/vacuna-edit-admin.component';
+import { VacunaNewAdminComponent } from './vacuna/vacuna-new-admin/vacuna-new-admin.component';
+import { VacunaPlistAdminComponent } from './vacuna/vacuna-plist-admin/vacuna-plist-admin.component';
+import { VacunaRemoveAdminComponent } from './vacuna/vacuna-remove-admin/vacuna-remove-admin.component';
+import { VacunaViewAdminComponent } from './vacuna/vacuna-view-admin/vacuna-view-admin.component';
 
 
 
@@ -55,6 +60,11 @@ const routes: Routes = [
   { path: 'admin/animal/remove/:id', component: AnimalRemoveAdminComponent },
   { path: 'admin/animal/edit/:id', component: AnimalEditAdminComponent },
   { path: 'admin/animal/new', component: AnimalNewAdminComponent },
+  { path: 'admin/vacuna/plist', component: VacunaPlistAdminComponent },
+  { path: 'admin/vacuna/view/:id', component: VacunaViewAdminComponent },
+  { path: 'admin/vacuna/remove/:id', component: VacunaRemoveAdminComponent },
+  { path: 'admin/vacuna/edit/:id', component: VacunaEditAdminComponent },
+  { path: 'admin/vacuna/new', component: VacunaNewAdminComponent },
 ];
 
 @NgModule({

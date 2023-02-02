@@ -68,9 +68,11 @@ export class CitaEditAdminComponent implements OnInit {
           pagado: [data.pagado, [Validators.required, Validators.minLength(0), Validators.maxLength(15)]],
           id_animal: [data.animal.id, [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
           id_servicio: [data.servicio.id, [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
-          id_usuario: [data.user.id, [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
+          id_user: [data.user.id, [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
         });
         this.updateAnimalDescription(this.oCita.animal.id);
+        this.updateServicioDescription(this.oCita.servicio.id);
+        this.updateUserDescription(this.oCita.user.id);
       }
     })
   }
@@ -83,7 +85,7 @@ export class CitaEditAdminComponent implements OnInit {
       pagado: this.oForm.value.pagado,
       animal: { id: this.oForm.value.id_animal },
       servicio: { id: this.oForm.value.id_servicio },
-      usuario: { id: this.oForm.value.id_usuario }
+      user: { id: this.oForm.value.id_user }
     }
     if (this.oForm.valid) {
       this.oCitaService.updateOne(this.oCita2Send).subscribe({ //???? mirar 
@@ -167,14 +169,14 @@ export class CitaEditAdminComponent implements OnInit {
     this.myModal.show()
   }
 
-  closeUserModal(id_User: number) {
-    this.oForm.controls['id_user'].setValue(id_User);
-    this.updateUserDescription(id_User);
+  closeUserModal(id_user: number) {
+    this.oForm.controls['id_user'].setValue(id_user);
+    this.updateUserDescription(id_user);
     this.myModal.hide();
   }
 
-  updateUserDescription(id_User: number) {
-    this.oUserService.getOne(id_User).subscribe({
+  updateUserDescription(id_user: number) {
+    this.oUserService.getOne(id_user).subscribe({
       next: (data: IUser) => {
         this.UserDescription = data.name;
       },

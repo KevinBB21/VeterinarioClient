@@ -35,7 +35,7 @@ export class CitaNewAdminComponent implements OnInit {
   usuarioDescription: string = "";
   id_animal:number;
   id_servicio:number;
-  id_usuario:number;
+  id_user:number;
 
   constructor(
     private oRouter: Router,
@@ -55,11 +55,11 @@ export class CitaNewAdminComponent implements OnInit {
       pagado: ['', [Validators.required, Validators.minLength(0), Validators.maxLength(1)]],
       id_animal: ["", [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
       id_servicio: ["", [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
-      id_usuario: ["", [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
+      id_user: ["", [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
     });
     this.updateAnimalDescription(this.id_animal);
     this.updateServicioDescription(this.id_servicio);
-    this.updateUsuarioDescription(this.id_usuario);
+    this.updateUsuarioDescription(this.id_user);
   }
 
   onSubmit() {
@@ -70,7 +70,7 @@ export class CitaNewAdminComponent implements OnInit {
       pagado: this.oForm.value.pagado,
       animal: {id: this.oForm.value.id_animal},
       servicio: {id: this.oForm.value.id_servicio},
-      usuario: {id: this.oForm.value.id_usuario}
+      user: {id: this.oForm.value.id_user}
     }
     if (this.oForm.valid) {
       this.oCitaService.newOne(this.oCita2Send).subscribe({
@@ -93,7 +93,7 @@ export class CitaNewAdminComponent implements OnInit {
     })
     var myModalEl = document.getElementById(this.mimodal);
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-      this.oRouter.navigate(['/admin/servicio/view', data])
+      this.oRouter.navigate(['/admin/cita/view', data])
     })
     this.myModal.show()
   }
@@ -147,20 +147,20 @@ export class CitaNewAdminComponent implements OnInit {
     this.myModal.show()
   }
   
-  updateUsuarioDescription(id_Usuario: number) {
-    this.oUserService.getOne(id_Usuario).subscribe({
+  updateUsuarioDescription(id_user: number) {
+    this.oUserService.getOne(id_user).subscribe({
       next: (data: IUser) => {
         this.usuarioDescription = data.name;
       },
       error: (error: any) => {
         this.usuarioDescription = "Usuario not found";
-        this.oForm.controls['id_Usuario'].setErrors({'incorrect': true});
+        this.oForm.controls['id_usuario'].setErrors({'incorrect': true});
       }
     })
   }
-  closeUsuarioModal(id_usuario: number) {
-    this.oForm.controls['id_usuario'].setValue(id_usuario);
-    this.updateUsuarioDescription(id_usuario);
+  closeUsuarioModal(id_user: number) {
+    this.oForm.controls['id_user'].setValue(id_user);
+    this.updateUsuarioDescription(id_user);
     this.myModal.hide();
   }
 

@@ -36,7 +36,7 @@ export interface ICita2Form {
     pagado:        FormControl<number>;
     id_animal:    FormControl<number>;
     id_servicio:    FormControl<number>;
-    id_usuario:    FormControl<number>;
+    id_user:    FormControl<number>;
 }
 export interface ICita2Send {
     id:          number;
@@ -44,5 +44,5 @@ export interface ICita2Send {
     pagado:        number;
     animal:   IEntity;
     servicio:   IEntity;
-    usuario:   IEntity;
+    user:   IEntity;
 }

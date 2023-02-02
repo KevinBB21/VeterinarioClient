@@ -62,7 +62,7 @@
             <div class="col-sm-6 has-validation">
               <div class="input-group">
                 <span class="input-group-text">{{AnimalDescription}}</span>
-                <input type="text" class="form-control" formControlName="id_Animal"
+                <input type="text" class="form-control" formControlName="id_animal"
 
 
                 (keyup)="updateAnimalDescription(oForm.controls.id_animal.value)"
@@ -94,7 +94,7 @@
             <div class="col-sm-6 has-validation">
               <div class="input-group">
                 <span class="input-group-text">{{ServicioDescription}}</span>
-                <input type="text" class="form-control" formControlName="id_Servicio"
+                <input type="text" class="form-control" formControlName="id_servicio"
 
 
                 (keyup)="updateServicioDescription(oForm.controls.id_servicio.value)"
@@ -125,26 +125,26 @@
             <div class="col-sm-6 has-validation">
               <div class="input-group">
                 <span class="input-group-text">{{UserDescription}}</span>
-                <input type="text" class="form-control" formControlName="id_usuario"
+                <input type="text" class="form-control" formControlName="id_user"
 
 
-                (keyup)="updateUserDescription(oForm.controls.id_usuario.value)"
+                (keyup)="updateUserDescription(oForm.controls.id_user.value)"
 
                 [ngClass]="{'is-valid' :
-                oForm.controls.id_usuario.dirty && !oForm.controls.id_usuario.errors?.['required'] &&
-                 !oForm.controls.id_usuario.errors?.['pattern'] && !oForm.controls.id_usuario.errors?.['incorrect'],
-                  'is-invalid' :  (oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required'] )
+                oForm.controls.id_user.dirty && !oForm.controls.id_user.errors?.['required'] &&
+                 !oForm.controls.id_user.errors?.['pattern'] && !oForm.controls.id_user.errors?.['incorrect'],
+                  'is-invalid' :  (oForm.controls.id_user.dirty &&  oForm.controls.id_user.errors?.['required'] )
                   ||
-                  ( oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['incorrect'])
+                  ( oForm.controls.id_user.dirty &&  oForm.controls.id_user.errors?.['incorrect'])
                 }">
                 <button type="button" class="btn btn-primary" (click)="openModalFindUser()">Buscar</button>
               </div>
               <div class="text-danger"
-                *ngIf="oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required']">
+                *ngIf="oForm.controls.id_user.dirty &&  oForm.controls.id_user.errors?.['required']">
                 El campo es obligatorio.
               </div>
               <div class="text-danger"
-                *ngIf="oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['pattern']">
+                *ngIf="oForm.controls.id_user.dirty &&  oForm.controls.id_user.errors?.['pattern']">
                 El campo ha de ser un entrero de máximo 6 dígitos.
               </div>
             </div>

@@ -47,6 +47,13 @@ import { AnimalPlistAdminComponent } from './animal/animal-plist-admin/animal-pl
 import { AnimalEditAdminComponent } from './animal/animal-edit-admin/animal-edit-admin.component';
 import { AnimalNewAdminComponent } from './animal/animal-new-admin/animal-new-admin.component';
 import { AnimalDetailAdminComponent } from './animal/unrouted/animal-detail-admin/animal-detail-admin.component';
+import { VacunaViewAdminComponent } from './vacuna/vacuna-view-admin/vacuna-view-admin.component';
+import { VacunaRemoveAdminComponent } from './vacuna/vacuna-remove-admin/vacuna-remove-admin.component';
+import { VacunaEditAdminComponent } from './vacuna/vacuna-edit-admin/vacuna-edit-admin.component';
+import { VacunaNewAdminComponent } from './vacuna/vacuna-new-admin/vacuna-new-admin.component';
+import { VacunaPlistAdminComponent } from './vacuna/vacuna-plist-admin/vacuna-plist-admin.component';
+import { VacunaDetailAdminComponent } from './vacuna/unrouted/vacuna-detail-admin/vacuna-detail-admin.component';
+import { VacunaFinderAdminComponent } from './vacuna/unrouted/vacuna-finder-admin/vacuna-finder-admin.component';
 
 
 @NgModule({
@@ -91,6 +98,13 @@ import { AnimalDetailAdminComponent } from './animal/unrouted/animal-detail-admi
     AnimalEditAdminComponent,
     AnimalNewAdminComponent,
     AnimalDetailAdminComponent,
+    VacunaViewAdminComponent,
+    VacunaRemoveAdminComponent,
+    VacunaEditAdminComponent,
+    VacunaNewAdminComponent,
+    VacunaPlistAdminComponent,
+    VacunaDetailAdminComponent,
+    VacunaFinderAdminComponent,
   ],
   imports: [
     BrowserModule,
