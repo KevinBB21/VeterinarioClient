@@ -1,1 +1,74 @@
-<p>fechavac-plist-admin works!</p>
+<div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Lista de fechavacs</h1>      
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+          <a [routerLink]="['/admin/fechavac/new']" class="btn btn-primary mx-3">Alta de fechavacs</a>
+          <app-search-unrouted [placeHolder]="'Buscar servicio'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+          <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.numberOfElements"
+          (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
+        </div>
+        <div class="col-md">
+          <app-pagination-unrouted [nPage]="responseFromServer?.number + 1" [nTotalPages]="responseFromServer?.totalPages"
+            (eePage)="setPage($event)"></app-pagination-unrouted>
+        </div>
+        <div class="col-md text-start">
+          <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+          <button class="btn btn-outline-danger" *ngIf="id_animalFilter!=0" (click)="setFilterByAnimal(0)">
+            <i class="bi bi-x-circle"></i> Reset animal {{id_animalFilter}} filter</button>
+        </div>
+        <div class="col-md text-start">
+            <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+            <button class="btn btn-outline-danger" *ngIf="id_vacunaFilter!=0" (click)="setFilterByVacuna(0)">
+              <i class="bi bi-x-circle"></i> Reset vacuna {{id_vacunaFilter}} filter</button>
+          </div>
+        <div class="col-md text-end">
+          <h5 class="text-muted">Total de registros en la consulta {{responseFromServer?.totalElements}}</h5>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th (click)="setOrder('id')">ID
+                <div *ngIf="sortField=='id'&&sortDirection=='asc'">^</div>
+                <div *ngIf="sortField=='id'&&sortDirection=='desc'">_</div>
+              </th>
+              <th (click)="setOrder('fecha_inic')">fecha_inic
+                <div *ngIf="sortField=='fecha_inic'&&sortDirection=='asc'">^</div>
+                <div *ngIf="sortField=='fecha_inic'&&sortDirection=='desc'">_</div>
+              </th>
+              <th (click)="setOrder('id_animal')">id_animal</th>
+              <th (click)="setOrder('id_vacuna')">id_vacuna</th>   
+              <th>Operaciones</th>              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fechavac of responseFromServer?.content">
+              <td>{{fechavac.id}}</td>
+              <td>{{fechavac.fecha_inic}}</td>
+              <td (click)="setFilterByAnimal(fechavac.animal.id)">
+                {{fechavac.animal.id}}-{{fechavac.animal.nombre}}
+              </td>
+              <td (click)="setFilterByVacuna(fechavac.vacuna.id)">
+                {{fechavac.vacuna.id}}-{{fechavac.vacuna.nombre}}
+              </td>
+        
+              <td>
+                <div class="btn-group" role="group" aria-label="Herramientas">
+                  <button class="btn btn-sm btn-primary" [routerLink]="['/admin/fechavac/view',fechavac.id]">
+                    ver
+                  </button>
+                  <button class="btn btn-sm btn-warning" [routerLink]="['/admin/fechavac/edit',fechavac.id]">
+                    editar
+                  </button>
+                  <button class="btn btn-sm btn-danger" [routerLink]="['/admin/fechavac/remove',fechavac.id]">
+                    borrar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -54,11 +54,13 @@ export class AnimalPlistAdminComponent implements OnInit {
 
   setFilter(term: string): void {
     this.strTermFilter = term;
+    this.setPage(1);
     this.getPage();
   }
 
   setFilterByTipoanimal(id: number): void {
     this.id_tipoanimalFilter = id;
+    this.setPage(1);
     this.getPage();
   }
 

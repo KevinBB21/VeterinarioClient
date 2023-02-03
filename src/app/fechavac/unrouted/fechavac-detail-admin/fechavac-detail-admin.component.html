@@ -1,1 +1,23 @@
-<p>fechavac-detail-admin works!</p>
+<table class="table table-bordered table-striped">
+    <tbody>
+      
+        <tr>
+            <th>Id</th>
+            <td>{{oFechavac.id}}</td>
+        </tr>
+        <tr>
+          <td>Fecha</td>
+          <td>{{oFechavac.fecha_inic}}</td>
+      </tr>
+      <tr>
+        <td>Animal</td>
+        <td>{{oFechavac.animal.id}}-{{oFechavac.animal.nombre}}</td>
+    </tr>
+        <tr>
+            <td>Servicio</td>
+            <td>{{oFechavac.vacuna.id}}-{{oFechavac.vacuna.nombre}}</td>
+        </tr>
+       
+    </tbody>
+  </table>
+  

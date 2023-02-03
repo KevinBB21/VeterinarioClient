@@ -57,7 +57,7 @@ export class AnimalEditAdminComponent implements OnInit {
          raza: [data.raza, [Validators.required, Validators.minLength(0), Validators.maxLength(15)]],
          fecha_nac: [data.fecha_nac, [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
          vacunado: [data.vacunado, [Validators.required, Validators.minLength(0), Validators.maxLength(1)]],
-         peso: [data.peso, [Validators.required, Validators.minLength(3), Validators.maxLength(150)]], 
+         peso: [data.peso, [Validators.required, Validators.minLength(0), Validators.maxLength(5)]], 
           id_tipoanimal: [data.tipoanimal.id, [Validators.required, Validators.pattern(/^\d{1,2}$/)]]
         });
         this.updateTipoAnimalDescription(this.oAnimal.tipoanimal.id);

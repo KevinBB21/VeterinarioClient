@@ -28,7 +28,7 @@ export class AnimalService {
       .set("page", page)
       .set("size", size);
       if (id_tipoanimal != 0) {
-        params = params.set("tipoAnimal", id_tipoanimal);
+        params = params.set("tipoanimal", id_tipoanimal);
       }
     if (strSortField != "") { //&sort=codigo,[asc|desc]
       if (strOrderDirection != "") {

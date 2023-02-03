@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IFechavac } from 'src/app/model/fechavac-interface';
+import { FechavacService } from 'src/app/service/fechavac.service';
 
 @Component({
   selector: 'app-fechavac-detail-admin',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FechavacDetailAdminComponent implements OnInit {
 
-  constructor() { }
+  @Input() id: number;
+  oFechavac: IFechavac;
 
-  ngOnInit(): void {
+  constructor(
+    private oFechavacService: FechavacService
+  ) { }
+
+  ngOnInit() {
+    this.getOne();
+  }
+
+  getOne() {
+    this.oFechavacService.getOne(this.id).subscribe({
+      next: (data: IFechavac) => {
+        this.oFechavac = data;
+        console.log(data);
+      }
+    })
+  }
+
+  changeID(ev) {
+    this.id = ev.target.value;
   }
 
 }
+

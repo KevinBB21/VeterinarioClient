@@ -21,14 +21,20 @@ export class CitaService {
     this.url = `${API_URL}${this.entityURL}`;
   }
 
-  getCitaPlist(page: number, size: number, termino: string,id_tipoCita: number, 
+  getCitaPlist(page: number, size: number, termino: string,id_animal: number, id_servicio: number, id_usuario: number, 
     strSortField: string, strOrderDirection: string): Observable<IPage<ICita>> {
     let params = new HttpParams()
       .set("filter", termino)
       .set("page", page)
       .set("size", size);
-      if (id_tipoCita != 0) {
-        params = params.set("tipoCita", id_tipoCita);
+      if (id_servicio != 0) {
+        params = params.set("servicio", id_servicio);
+      }
+      if (id_animal != 0) {
+        params = params.set("animal", id_animal);
+      }
+      if (id_usuario != 0) {
+        params = params.set("user", id_usuario);
       }
     if (strSortField != "") { //&sort=codigo,[asc|desc]
       if (strOrderDirection != "") {

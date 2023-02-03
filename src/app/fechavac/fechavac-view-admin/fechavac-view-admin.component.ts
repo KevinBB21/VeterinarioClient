@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IFechavac } from 'src/app/model/fechavac-interface';
 
 @Component({
   selector: 'app-fechavac-view-admin',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FechavacViewAdminComponent implements OnInit {
 
-  constructor() { }
+  id: number = 0;
+  oUser: IFechavac = null;
 
-  ngOnInit(): void {
+  constructor(
+    private oActivatedRoute: ActivatedRoute
+  ) {
+    this.id = oActivatedRoute.snapshot.params['id'];
   }
 
+  ngOnInit(): void {
+    
+  }
 }

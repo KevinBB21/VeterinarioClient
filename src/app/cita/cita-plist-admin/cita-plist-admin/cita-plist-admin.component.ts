@@ -32,7 +32,7 @@ export class CitaPlistAdminComponent implements OnInit {
   }
 
   getPage() {
-    this.oCitaService.getCitaPlist(this.page, this.numberOfElements, this.strTermFilter,this.id_animalFilter, this.sortField, this.sortDirection)
+    this.oCitaService.getCitaPlist(this.page, this.numberOfElements, this.strTermFilter,this.id_animalFilter,this.id_servicioFilter,this.id_usuarioFilter, this.sortField, this.sortDirection)
       .subscribe({
         next: (resp: IPage<ICita>) => {
           this.responseFromServer = resp;
@@ -57,21 +57,26 @@ export class CitaPlistAdminComponent implements OnInit {
 
   setFilter(term: string): void {
     this.strTermFilter = term;
+    this.setPage(1);
     this.getPage();
+    
   }
 
   setFilterByAnimal(id: number): void {
     this.id_animalFilter = id;
+    this.setPage(1);
     this.getPage();
   }
 
   setFilterByServicio(id: number): void {
     this.id_servicioFilter = id;
+    this.setPage(1);
     this.getPage();
   }
 
   setFilterByUsuario(id: number): void {
     this.id_usuarioFilter = id;
+    this.setPage(1);
     this.getPage();
   }
 

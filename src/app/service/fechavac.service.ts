@@ -21,14 +21,17 @@ export class FechavacService {
     this.url = `${API_URL}${this.entityURL}`;
   }
 
-  getFechavacPlist(page: number, size: number, termino: string,id_tipovacuna: number, 
+  getFechavacPlist(page: number, size: number, termino: string,id_tipovacuna: number,id_animal: number ,
     strSortField: string, strOrderDirection: string): Observable<IPage<IFechavac>> {
     let params = new HttpParams()
       .set("filter", termino)
       .set("page", page)
       .set("size", size);
       if (id_tipovacuna != 0) {
-        params = params.set("tipoVacuna", id_tipovacuna);
+        params = params.set("tipovacuna", id_tipovacuna);
+      }
+      if (id_animal != 0) {
+        params = params.set("animal", id_animal);
       }
     if (strSortField != "") { //&sort=codigo,[asc|desc]
       if (strOrderDirection != "") {
