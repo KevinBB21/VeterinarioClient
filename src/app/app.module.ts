@@ -54,6 +54,12 @@ import { VacunaNewAdminComponent } from './vacuna/vacuna-new-admin/vacuna-new-ad
 import { VacunaPlistAdminComponent } from './vacuna/vacuna-plist-admin/vacuna-plist-admin.component';
 import { VacunaDetailAdminComponent } from './vacuna/unrouted/vacuna-detail-admin/vacuna-detail-admin.component';
 import { VacunaFinderAdminComponent } from './vacuna/unrouted/vacuna-finder-admin/vacuna-finder-admin.component';
+import { FechavacViewAdminComponent } from './fechavac/fechavac-view-admin/fechavac-view-admin.component';
+import { FechavacRemoveAdminComponent } from './fechavac/fechavac-remove-admin/fechavac-remove-admin.component';
+import { FechavacPlistAdminComponent } from './fechavac/fechavac-plist-admin/fechavac-plist-admin.component';
+import { FechavacEditAdminComponent } from './fechavac/fechavac-edit-admin/fechavac-edit-admin.component';
+import { FechavacNewAdminComponent } from './fechavac/fechavac-new-admin/fechavac-new-admin.component';
+import { FechavacDetailAdminComponent } from './fechavac/unrouted/fechavac-detail-admin/fechavac-detail-admin.component';
 
 
 @NgModule({
@@ -105,6 +111,12 @@ import { VacunaFinderAdminComponent } from './vacuna/unrouted/vacuna-finder-admi
     VacunaPlistAdminComponent,
     VacunaDetailAdminComponent,
     VacunaFinderAdminComponent,
+    FechavacViewAdminComponent,
+    FechavacRemoveAdminComponent,
+    FechavacPlistAdminComponent,
+    FechavacEditAdminComponent,
+    FechavacNewAdminComponent,
+    FechavacDetailAdminComponent,
   ],
   imports: [
     BrowserModule,
