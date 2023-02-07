@@ -60,6 +60,7 @@ import { FechavacPlistAdminComponent } from './fechavac/fechavac-plist-admin/fec
 import { FechavacEditAdminComponent } from './fechavac/fechavac-edit-admin/fechavac-edit-admin.component';
 import { FechavacNewAdminComponent } from './fechavac/fechavac-new-admin/fechavac-new-admin.component';
 import { FechavacDetailAdminComponent } from './fechavac/unrouted/fechavac-detail-admin/fechavac-detail-admin.component';
+import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
@@ -123,7 +124,7 @@ import { FechavacDetailAdminComponent } from './fechavac/unrouted/fechavac-detai
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
   ],
   providers: [
