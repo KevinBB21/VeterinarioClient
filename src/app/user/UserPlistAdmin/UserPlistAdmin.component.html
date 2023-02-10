@@ -54,6 +54,8 @@
               <td (click)="setFilterByUsertype(user.usertype.id)">
                 {{user.usertype.id}}-{{user.usertype.name}}
               </td>
+              <td><button class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin','cita','plist','user',user.id]"
+                [disabled]="user.citas<=0">{{user.citas}}</button></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                   <button class="btn btn-sm btn-primary" [routerLink]="['/admin/user/view',user.id]">

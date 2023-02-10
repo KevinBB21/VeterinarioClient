@@ -22,12 +22,25 @@ export class LogoutComponent implements OnInit {
     protected oLocation: Location,
     public oMetadataService: MetadataService
   ) {
-  }
+    oSessionService.reload();
+    oSessionService.checkSession().subscribe({
+      next: (data: any) => {
+        // ok
+      },
+      error: (error: any) => {
+        this.oRouter.navigate(['/login']);
+      }
+    })
+   }
+    
+  
+  
 
   public closeSession() {
     this.oSessionService.logout().subscribe(data => {
       localStorage.clear();
       this.oRouter.navigate(['/','home']);
+      window.location.reload();
     });
   }
 

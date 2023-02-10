@@ -35,9 +35,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of responseFromServer?.content">
-              <td>{{user.id}}</td>
-              <td>{{user.name}}</td>
+            <tr *ngFor="let usertype of responseFromServer?.content">
+              <td>{{usertype.id}}</td>
+              <td>{{usertype.name}}</td>
+              <td><button class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin','user','plist','usertype',usertype.id]"
+                [disabled]="usertype.users<=0">{{usertype.users}}</button></td>
             </tr>
           </tbody>
         </table>

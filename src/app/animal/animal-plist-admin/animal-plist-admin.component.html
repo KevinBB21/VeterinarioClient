@@ -51,6 +51,8 @@
               <td (click)="setFilterByTipoanimal(animal.tipoanimal.id)">
                 {{animal.tipoanimal.id}}-{{animal.tipoanimal.tipo}}
               </td>
+              <td><button class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin','cita','plist','animal',animal.id]"
+                [disabled]="animal.citas<=0">{{animal.citas}}</button></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                   <button class="btn btn-sm btn-primary" [routerLink]="['/admin/animal/view',animal.id]">

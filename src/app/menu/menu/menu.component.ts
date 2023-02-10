@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IUser } from 'src/app/model/user-interface';
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  oUserSession: IUser;
+
+
+  constructor() { 
+    this.oUserSession = JSON.parse(localStorage.getItem("user"));
+    console.log(this.oUserSession);
+    
+  }
 
   ngOnInit(): void {
   }

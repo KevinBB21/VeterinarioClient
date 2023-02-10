@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IAnimal } from 'src/app/model/cita-interface';
+import { IAnimal } from 'src/app/model/animal-interface';
 import { IPage } from 'src/app/model/generic';
 import { AnimalService } from 'src/app/service/animal.service';
 
@@ -22,6 +22,7 @@ export class AnimalPlistAdminComponent implements OnInit {
     private oAnimalService: AnimalService
   ) {
     this.getPage();
+    
   }
 
   ngOnInit() {

@@ -28,6 +28,16 @@ export class LoginComponent implements OnInit {
     public oMetadataService: MetadataService 
   ) {
 
+    oSessionService.reload();
+    oSessionService.checkSession().subscribe({
+      next: (data: any) => {
+        // ok
+      },
+      error: (error: any) => {
+        this.oRouter.navigate(['/login']);
+      }
+    })
+
     if (oRoute.snapshot.data['message']) {
       this.oUserSession = this.oRoute.snapshot.data['message'];
       localStorage.setItem("user", JSON.stringify(oRoute.snapshot.data['message']));
@@ -49,12 +59,13 @@ export class LoginComponent implements OnInit {
     const loginData = { username: this.formularioLogin.get('username')!.value, password: this.oCryptoService.getSHA256(this.formularioLogin.get('password')!.value) };
     console.log("login:onSubmit: ", loginData);
     this.oSessionService.login(JSON.stringify(loginData)).subscribe(data => {
-      localStorage.setItem("user", JSON.stringify(data.toString()));
+      localStorage.setItem("user", JSON.stringify(data));
       if (data != null) {
         this.oRouter.navigate(['/','home']);
+        window.location.reload();
       } else {
         localStorage.clear();
-      }
+      }      
     });
     return false;
   }

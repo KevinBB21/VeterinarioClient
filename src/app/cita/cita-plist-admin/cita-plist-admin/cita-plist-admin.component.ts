@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ICita } from 'src/app/model/cita-interface';
 import { IPage } from 'src/app/model/generic';
 import { CitaService } from 'src/app/service/cita.service';
@@ -22,8 +23,29 @@ export class CitaPlistAdminComponent implements OnInit {
   sortDirection: string = "";
 
   constructor(
-    private oCitaService: CitaService
-  ) {
+    private oCitaService: CitaService,
+    private oActivatedRoute: ActivatedRoute,
+    ) {
+        const id_animal =  this.oActivatedRoute.snapshot.params['id_animal'];
+        if(id_animal == null){
+            this.id_animalFilter = 0;
+        }else{
+            this.id_animalFilter = id_animal;
+        }
+     
+        const id_servicio =  this.oActivatedRoute.snapshot.params['id_servicio'];
+        if(id_servicio == null){
+            this.id_servicioFilter = 0;
+        }else{
+            this.id_servicioFilter = id_servicio;
+        }
+        
+        const id_usuario =  this.oActivatedRoute.snapshot.params['id_usuario'];
+        if(id_usuario == null){
+            this.id_usuarioFilter = 0;
+        }else{
+            this.id_usuarioFilter = id_usuario;
+        }
   }
   
   ngOnInit() {

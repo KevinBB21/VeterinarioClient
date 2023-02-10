@@ -16,6 +16,7 @@ export interface IAnimal {
     vacunado: number;
     peso: number;
     tipoanimal: ITipoanimal;
+    citas: number;
 }
 
 

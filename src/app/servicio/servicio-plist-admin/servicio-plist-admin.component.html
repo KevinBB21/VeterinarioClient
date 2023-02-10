@@ -47,6 +47,8 @@
               <td (click)="setFilterByTiposervicio(servicio.tiposervicio.id)">
                 {{servicio.tiposervicio.id}}-{{servicio.tiposervicio.name}}
               </td>
+              <td><button class="btn btn-outline-secondary btn-sm" [routerLink]="['/admin','cita','plist','servicio',servicio.id]"
+                [disabled]="servicio.citas<=0">{{servicio.citas}}</button></td>
               <td>
                 <div class="btn-group" role="group" aria-label="Herramientas">
                   <button class="btn btn-sm btn-primary" [routerLink]="['/admin/servicio/view',servicio.id]">

@@ -13,6 +13,7 @@ export interface IServicio {
     precio: number;
     imagen: number;
     descripcion: string;
+    citas: number;
     tiposervicio: ITiposervicio;
 }
 
