@@ -54,13 +54,14 @@ import { VacunaNewAdminComponent } from './vacuna/vacuna-new-admin/vacuna-new-ad
 import { VacunaPlistAdminComponent } from './vacuna/vacuna-plist-admin/vacuna-plist-admin.component';
 import { VacunaDetailAdminComponent } from './vacuna/unrouted/vacuna-detail-admin/vacuna-detail-admin.component';
 import { VacunaFinderAdminComponent } from './vacuna/unrouted/vacuna-finder-admin/vacuna-finder-admin.component';
-import { FechavacViewAdminComponent } from './fechavac/fechavac-view-admin/fechavac-view-admin.component';
-import { FechavacRemoveAdminComponent } from './fechavac/fechavac-remove-admin/fechavac-remove-admin.component';
-import { FechavacPlistAdminComponent } from './fechavac/fechavac-plist-admin/fechavac-plist-admin.component';
-import { FechavacEditAdminComponent } from './fechavac/fechavac-edit-admin/fechavac-edit-admin.component';
-import { FechavacNewAdminComponent } from './fechavac/fechavac-new-admin/fechavac-new-admin.component';
+import { FechavacViewAdminComponent } from './fechavac/routed/fechavac-view-admin/fechavac-view-admin.component';
+import { FechavacRemoveAdminComponent } from './fechavac/routed/fechavac-remove-admin/fechavac-remove-admin.component';
+import { FechavacPlistAdminComponent } from './fechavac/routed/fechavac-plist-admin/fechavac-plist-admin.component';
+import { FechavacEditAdminComponent } from './fechavac/routed/fechavac-edit-admin/fechavac-edit-admin.component';
+import { FechavacNewAdminComponent } from './fechavac/routed/fechavac-new-admin/fechavac-new-admin.component';
 import { FechavacDetailAdminComponent } from './fechavac/unrouted/fechavac-detail-admin/fechavac-detail-admin.component';
 import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
+import { FechavacEventoUserComponent } from './fechavac/routed/fechavac-evento-user/fechavac-evento-user.component';
 
 
 @NgModule({
@@ -118,6 +119,7 @@ import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
     FechavacEditAdminComponent,
     FechavacNewAdminComponent,
     FechavacDetailAdminComponent,
+    FechavacEventoUserComponent,
   ],
   imports: [
     BrowserModule,

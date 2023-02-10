@@ -37,11 +37,11 @@ import { VacunaPlistAdminComponent } from './vacuna/vacuna-plist-admin/vacuna-pl
 import { VacunaRemoveAdminComponent } from './vacuna/vacuna-remove-admin/vacuna-remove-admin.component';
 import { VacunaViewAdminComponent } from './vacuna/vacuna-view-admin/vacuna-view-admin.component';
 //
-import { FechavacEditAdminComponent } from './fechavac/fechavac-edit-admin/fechavac-edit-admin.component';
-import { FechavacNewAdminComponent } from './fechavac/fechavac-new-admin/fechavac-new-admin.component';
-import { FechavacPlistAdminComponent } from './fechavac/fechavac-plist-admin/fechavac-plist-admin.component';
-import { FechavacRemoveAdminComponent } from './fechavac/fechavac-remove-admin/fechavac-remove-admin.component';
-import { FechavacViewAdminComponent } from './fechavac/fechavac-view-admin/fechavac-view-admin.component';
+import { FechavacEditAdminComponent } from './fechavac/routed/fechavac-edit-admin/fechavac-edit-admin.component';
+import { FechavacNewAdminComponent } from './fechavac/routed/fechavac-new-admin/fechavac-new-admin.component';
+import { FechavacPlistAdminComponent } from './fechavac/routed/fechavac-plist-admin/fechavac-plist-admin.component';
+import { FechavacRemoveAdminComponent } from './fechavac/routed/fechavac-remove-admin/fechavac-remove-admin.component';
+import { FechavacViewAdminComponent } from './fechavac/routed/fechavac-view-admin/fechavac-view-admin.component';
 
 
 
