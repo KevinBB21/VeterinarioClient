@@ -19,11 +19,11 @@ import { ServicioRemoveAdminComponent } from './servicio/servicio-remove-admin/s
 import { ServicioEditAdminComponent } from './servicio/servicio-edit-admin/servicio-edit-admin.component';
 import { ServicioNewAdminComponent } from './servicio/servicio-new-admin/servicio-new-admin.component';
 //
-import { CitaNewAdminComponent } from './cita/cita-new-admin/cita-new-admin/cita-new-admin.component';
-import { CitaEditAdminComponent } from './cita/cita-edit-admin/cita-edit-admin/cita-edit-admin.component';
-import { CitaPlistAdminComponent } from './cita/cita-plist-admin/cita-plist-admin/cita-plist-admin.component';
-import { CitaRemoveAdminComponent } from './cita/cita-remove-admin/cita-remove-admin/cita-remove-admin.component';
-import { CitaViewAdminComponent } from './cita/cita-view-admin/cita-view-admin/cita-view-admin.component';
+import { CitaNewAdminComponent } from './cita/routed/cita-new-admin/cita-new-admin/cita-new-admin.component';
+import { CitaEditAdminComponent } from './cita/routed/cita-edit-admin/cita-edit-admin/cita-edit-admin.component';
+import { CitaPlistAdminComponent } from './cita/routed/cita-plist-admin/cita-plist-admin/cita-plist-admin.component';
+import { CitaRemoveAdminComponent } from './cita/routed/cita-remove-admin/cita-remove-admin/cita-remove-admin.component';
+import { CitaViewAdminComponent } from './cita/routed/cita-view-admin/cita-view-admin/cita-view-admin.component';
 //
 import { AnimalEditAdminComponent } from './animal/animal-edit-admin/animal-edit-admin.component';
 import { AnimalNewAdminComponent } from './animal/animal-new-admin/animal-new-admin.component';
