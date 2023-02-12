@@ -42,6 +42,8 @@ import { FechavacNewAdminComponent } from './fechavac/routed/fechavac-new-admin/
 import { FechavacPlistAdminComponent } from './fechavac/routed/fechavac-plist-admin/fechavac-plist-admin.component';
 import { FechavacRemoveAdminComponent } from './fechavac/routed/fechavac-remove-admin/fechavac-remove-admin.component';
 import { FechavacViewAdminComponent } from './fechavac/routed/fechavac-view-admin/fechavac-view-admin.component';
+import { FechavacEventoUserComponent } from './fechavac/routed/fechavac-evento-user/fechavac-evento-user.component';
+import { FechavacFormUserComponent } from './fechavac/routed/fechavac-form-user/fechavac-form-user.component';
 
 
 
@@ -69,9 +71,9 @@ const routes: Routes = [
   { path: 'admin/cita/remove/:id', component: CitaRemoveAdminComponent },
   { path: 'admin/cita/edit/:id', component: CitaEditAdminComponent },
   { path: 'admin/cita/new', component: CitaNewAdminComponent },
-  {path: 'admin/cita/plist/animal/:id_animal', component: CitaPlistAdminComponent },
-  {path: 'admin/cita/plist/servicio/:id_servicio', component: CitaPlistAdminComponent },
-  {path: 'admin/cita/plist/user/:id_usuario', component: CitaPlistAdminComponent },
+  { path: 'admin/cita/plist/animal/:id_animal', component: CitaPlistAdminComponent },
+  { path: 'admin/cita/plist/servicio/:id_servicio', component: CitaPlistAdminComponent },
+  { path: 'admin/cita/plist/user/:id_usuario', component: CitaPlistAdminComponent },
   { path: 'admin/animal/plist', component: AnimalPlistAdminComponent },
   { path: 'admin/animal/view/:id', component: AnimalViewAdminComponent },
   { path: 'admin/animal/remove/:id', component: AnimalRemoveAdminComponent },
@@ -88,6 +90,9 @@ const routes: Routes = [
   { path: 'admin/fechavac/remove/:id', component: FechavacRemoveAdminComponent },
   { path: 'admin/fechavac/edit/:id', component: FechavacEditAdminComponent },
   { path: 'admin/fechavac/new', component: FechavacNewAdminComponent },
+  { path: 'user/fechavac/evento', component: FechavacEventoUserComponent},
+  { path: 'user/fechavac/form/:id_vacuna', component: FechavacFormUserComponent}
+  
 ];
 
 @NgModule({

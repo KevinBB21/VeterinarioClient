@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IVacuna } from 'src/app/model/vacuna-interface';
+import { VacunaService } from 'src/app/service/vacuna.service';
 
 @Component({
   selector: 'app-fechavac-evento-user',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FechavacEventoUserComponent implements OnInit {
 
-  constructor() { }
+  oVacuna: IVacuna[];
 
-  ngOnInit(): void {
+
+  constructor(
+    private oVacunaService: VacunaService
+  ) { }
+
+  ngOnInit() {
+    this.getOne();
   }
+
+  getOne() {
+  for (let index = 0; index < 3 ; index++) {
+    this.oVacunaService.getOne(index).subscribe({
+      next: (data: IVacuna) => {
+        this.oVacuna[index] = data;
+        console.log(data);
+      }
+    })
+    
+  }
+   
+  }
+
 
 }

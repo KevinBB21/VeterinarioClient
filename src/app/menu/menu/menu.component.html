@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
+      <img src="/assets/foto2.png">
       <a class="navbar-brand" href="#"> Veterinario Client</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,6 +27,9 @@
           </li>
           <li class="nav-item" *ngIf="oUserSession">
             <a class="nav-link" aria-current="page" routerLink="admin/vacuna/plist">Vacuna</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" aria-current="page" routerLink="user/fechavac/evento">Vacunas</a>
           </li>
           <li class="nav-item" *ngIf="oUserSession">
             <a class="nav-link" aria-current="page" routerLink="admin/fechavac/plist">Fechavac</a>

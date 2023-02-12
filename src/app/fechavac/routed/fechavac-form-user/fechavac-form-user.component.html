@@ -1,0 +1,72 @@
+<div class="user">
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+        <h1 class="user__title">A lightweight and simple sign-up form</h1>
+    </header>
+    
+    <form class="form" [formGroup]="">
+        <div class="mb-3 row">
+            <label for="inputfecha_inic" class="col-sm-2 col-form-label">fecha_inic</label>
+            <div class="col-sm-4 has-validation">
+              <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.fecha_inic.dirty && !oForm.controls.fecha_inic.errors?.['required'] &&
+              oForm.controls.fecha_inic.dirty && !oForm.controls.fecha_inic.errors?.['minlength'] 
+                && oForm.controls.fecha_inic.dirty && !oForm.controls.fecha_inic.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.fecha_inic.dirty &&  oForm.controls.fecha_inic.errors?.['minlength'] 
+                ||  oForm.controls.fecha_inic.dirty &&  oForm.controls.fecha_inic.errors?.['maxlength'] ||  
+                oForm.controls.fecha_inic.dirty &&  oForm.controls.fecha_inic.errors?.['required']}" id="inputfecha_inic"
+                formControlName="fecha_inic">
+              <div id="inputfecha_inicFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.fecha_inic.dirty &&  oForm.controls.fecha_inic.errors?.['minlength']">
+                La longitud mínima es de 5 caracteres.
+              </div>
+              <div id="inputfecha_inicFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.fecha_inic.dirty &&  oForm.controls.fecha_inic.errors?.['maxlength']">
+                La longitud máxima es de 10 caracteres.
+              </div>
+              <div id="inputfecha_inicFeedback" class="invalid-feedback"
+                *ngIf="oForm.controls.fecha_inic.dirty &&  oForm.controls.fecha_inic.errors?.['required']">
+                El campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        
+          <div class="mb-3 row">
+            <label for="inputanimal" class="col-sm-2 col-form-label">animal</label>
+            <div class="col-sm-6 has-validation">
+              <div class="input-group">
+                <span class="input-group-text">{{animalDescription}}</span>
+                <input type="text" class="form-control" formControlName="id_animal"
+
+
+                (keyup)="updateAnimalDescription(oForm.controls.id_animal.value)"
+
+                [ngClass]="{'is-valid' :
+                oForm.controls.id_animal.dirty && !oForm.controls.id_animal.errors?.['required'] &&
+                 !oForm.controls.id_animal.errors?.['pattern'] && !oForm.controls.id_animal.errors?.['incorrect'],
+                  'is-invalid' :  (oForm.controls.id_animal.dirty &&  oForm.controls.id_animal.errors?.['required'] )
+                  ||
+                  ( oForm.controls.id_animal.dirty &&  oForm.controls.id_animal.errors?.['incorrect'])
+                }">
+                <button type="button" class="btn btn-primary" (click)="openModalFindAnimal()">Buscar</button>
+              </div>
+              <div class="text-danger"
+                *ngIf="oForm.controls.id_animal.dirty &&  oForm.controls.id_animal.errors?.['required']">
+                El campo es obligatorio.
+              </div>
+              <div class="text-danger"
+                *ngIf="oForm.controls.id_animal.dirty &&  oForm.controls.id_animal.errors?.['pattern']">
+                El campo ha de ser un entrero de máximo 6 dígitos.
+              </div>
+            </div>
+          </div>
+        
+        <div class="mb-3 row">
+            <label for="inputVacuna" class="col-sm-2 col-form-label">Vacuna</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="inputvacuna" formControlName="vacuna" readonly>
+            </div>
+          </div>
+        
+        <button class="btn" type="button">Registrarse</button>
+    </form>
+</div>
