@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from 'src/app/model/user-interface';
-import { SessionService } from 'src/app/service/session.service';
+import { EmitEvent, Events, SessionService } from 'src/app/service/session.service';
 import { UntypedFormGroup, UntypedFormBuilder} from '@angular/forms';
 import { CryptoService } from 'src/app/service/crypto.service';
 import { MetadataService } from 'src/app/service/metadata.service';
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
     public oMetadataService: MetadataService 
   ) {
 
-    oSessionService.reload();
     oSessionService.checkSession().subscribe({
       next: (data: any) => {
         // ok
@@ -61,8 +60,8 @@ export class LoginComponent implements OnInit {
     this.oSessionService.login(JSON.stringify(loginData)).subscribe(data => {
       localStorage.setItem("user", JSON.stringify(data));
       if (data != null) {
+        this.oSessionService.emit(new EmitEvent(Events.login, data));
         this.oRouter.navigate(['/','home']);
-        window.location.reload();
       } else {
         localStorage.clear();
       }      

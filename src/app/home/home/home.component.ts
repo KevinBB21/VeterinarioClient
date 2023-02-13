@@ -14,11 +14,9 @@ export class HomeComponent implements OnInit {
     private oSessionService: SessionService,
     private oRouter: Router
   ) { 
-    oSessionService.reload();
   }
  
   ngOnInit() {
-    this.oSessionService.reload();
   }
 
 }

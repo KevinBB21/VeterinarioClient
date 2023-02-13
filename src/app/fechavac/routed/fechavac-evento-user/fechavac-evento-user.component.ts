@@ -9,29 +9,50 @@ import { VacunaService } from 'src/app/service/vacuna.service';
 })
 export class FechavacEventoUserComponent implements OnInit {
 
-  oVacuna: IVacuna[];
+  
+  oVacuna: IVacuna;
+  oVacuna2: IVacuna;
+  oVacuna3: IVacuna;
 
 
   constructor(
-    private oVacunaService: VacunaService
+    private oVacunaService: VacunaService,
   ) { }
 
   ngOnInit() {
     this.getOne();
-  }
-
-  getOne() {
-  for (let index = 0; index < 3 ; index++) {
-    this.oVacunaService.getOne(index).subscribe({
-      next: (data: IVacuna) => {
-        this.oVacuna[index] = data;
-        console.log(data);
-      }
-    })
+    this.get2();
+    this.get3();
     
   }
-   
+
+ 
+
+  getOne() {
+ 
+    this.oVacunaService.getOne(1).subscribe({
+      next: (data: IVacuna) => {
+        this.oVacuna = data; 
+      }
+    })
   }
 
+  get2() {
+ 
+    this.oVacunaService.getOne(2).subscribe({
+      next: (data: IVacuna) => {
+        this.oVacuna2 = data; 
+      }
+    })
+  }
+
+  get3() {
+ 
+    this.oVacunaService.getOne(3).subscribe({
+      next: (data: IVacuna) => {
+        this.oVacuna3 = data; 
+      }
+    })
+  }
 
 }

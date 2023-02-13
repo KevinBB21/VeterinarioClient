@@ -48,7 +48,6 @@ export class FechavacFormUserComponent implements OnInit {
       }
     })
   }
-  
   id: number = 0;
   oFechavac: IFechavac = null;
   oFechavac2Form: IFechavac2Form = null;
@@ -62,21 +61,18 @@ export class FechavacFormUserComponent implements OnInit {
   animalDescription: string = "";
   vacunaDescription: string = "";;
   id_animal:number;
+  vacuna:number;
 
 
-
- 
 
   ngOnInit() {
-    this.getOne();
     this.oForm = <FormGroup>this.oFormBuilder.group({
       id: [''],
       fecha_inic: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       id_animal: ["", [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
-      vacuna: [this.oVacuna.nombre, [Validators.required, Validators.pattern(/^\d{1,2}$/)]],
     });
     this.updateAnimalDescription(this.id_animal);
-
+    this.updateVacunaDescription(this.id_vacuna);
   }
 
   onSubmit() {
@@ -85,10 +81,10 @@ export class FechavacFormUserComponent implements OnInit {
       id: this.oForm.value.id,
       fecha_inic: this.oForm.value.fecha_inic,
       animal: {id: this.oForm.value.id_animal},
-      vacuna: {id: this.oForm.value.id_vacuna},
+      vacuna: {id: this.id_vacuna},
 
     }
-    if (this.oForm.valid) {
+    if (true) {
       this.oFechavacService.newOne(this.oFechavac2Send).subscribe({
         next: (data: number) => {
           //open bootstrap modal here
@@ -109,7 +105,7 @@ export class FechavacFormUserComponent implements OnInit {
     })
     var myModalEl = document.getElementById(this.mimodal);
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
-      this.oRouter.navigate(['/admin/Fechavac/view', data])
+      this.oRouter.navigate(['/admin/fechavac/view', data])
     })
     this.myModal.show()
   }
@@ -139,7 +135,30 @@ export class FechavacFormUserComponent implements OnInit {
   }
 
   
- 
+  updateVacunaDescription(id_vacuna: number) {
+    this.oVacunaService.getOne(id_vacuna).subscribe({
+      next: (data: IVacuna) => {
+        this.vacunaDescription = data.nombre;
+      },
+      error: (error: any) => {
+        this.vacunaDescription = "vacuna not found";
+        this.oForm.controls['id_vacuna'].setErrors({'incorrect': true});
+      }
+    })
+  }
+  closeVacunaModal(id_vacuna: number) {
+    this.oForm.controls['id_vacuna'].setValue(id_vacuna);
+    this.updateVacunaDescription(id_vacuna);
+    this.myModal.hide();
+  }
+
+  openModalFindVacuna(): void {
+    this.myModal = new bootstrap.Modal(document.getElementById("findVacuna"), { //pasar el myModal como parametro
+      keyboard: false
+    })
+    this.myModal.show()
+  }
+  
   
 
 

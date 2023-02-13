@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SessionService } from 'src/app/service/session.service';
+import { EmitEvent, Events, SessionService } from 'src/app/service/session.service';
 import { Location } from '@angular/common';
 import { MetadataService } from 'src/app/service/metadata.service';
 import { IUser } from 'src/app/model/user-interface';
@@ -22,7 +22,6 @@ export class LogoutComponent implements OnInit {
     protected oLocation: Location,
     public oMetadataService: MetadataService
   ) {
-    oSessionService.reload();
     oSessionService.checkSession().subscribe({
       next: (data: any) => {
         // ok
@@ -39,8 +38,8 @@ export class LogoutComponent implements OnInit {
   public closeSession() {
     this.oSessionService.logout().subscribe(data => {
       localStorage.clear();
+      this.oSessionService.emit(new EmitEvent(Events.logout, ""));
       this.oRouter.navigate(['/','home']);
-      window.location.reload();
     });
   }
 
