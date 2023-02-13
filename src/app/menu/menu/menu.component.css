@@ -1,0 +1,5 @@
+.logo{
+
+    width: clamp(7rem, 2vw, 5rem);
+
+}
