@@ -29,7 +29,7 @@
           <li class="nav-item"  *ngIf="strUsertype == 'ADMIN'">
             <a class="nav-link" aria-current="page" routerLink="admin/vacuna/plist">Vacuna</a>
           </li>
-          <li class="nav-item" >
+          <li class="nav-item" *ngIf="strUsertype == 'USER'" >
             <a class="nav-link" aria-current="page" routerLink="user/fechavac/evento">Vacunas</a>
           </li>
           <li class="nav-item"  *ngIf="strUsertype == 'ADMIN'">
