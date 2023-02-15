@@ -63,6 +63,7 @@ import { FechavacDetailAdminComponent } from './fechavac/unrouted/fechavac-detai
 import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
 import { FechavacEventoUserComponent } from './fechavac/routed/fechavac-evento-user/fechavac-evento-user.component';
 import { FechavacFormUserComponent } from './fechavac/routed/fechavac-form-user/fechavac-form-user.component';
+import { FooterComponent } from './footer/footer/footer.component';
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { FechavacFormUserComponent } from './fechavac/routed/fechavac-form-user/
     FechavacDetailAdminComponent,
     FechavacEventoUserComponent,
     FechavacFormUserComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

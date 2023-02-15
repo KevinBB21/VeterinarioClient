@@ -14,3 +14,7 @@
     background: #F9A743;
     border-radius: 5px;
   }
+
+  body {
+    min-height: 100vh;
+  }
